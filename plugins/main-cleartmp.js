@@ -4,7 +4,7 @@ let handler = async (m) => {
     if (fs.existsSync(tmpPath)) {
         fs.readdirSync(tmpPath).forEach(file => fs.unlinkSync(`${tmpPath}/${file}`))
     }
-    m.reply('Caché limpiada.')
+    m.reply('⛈️ *RAYO PREM* ➔ Caché purgada\n⚡ *Estado:* Archivos temporales eliminados\n🌙 *El trueno está limpio*') // Cambiado
 }
 handler.help = ['cleartmp']
 handler.tags = ['main']
