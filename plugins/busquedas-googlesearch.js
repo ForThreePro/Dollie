@@ -1,30 +1,34 @@
-import ytSearch from 'yt-search'
+import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply('✨ *Nox Bot 🌃*\n¿Qué quieres buscar?')
-    
-    await m.react('🔍')
-    
-    try {
-        let search = await ytSearch(text)
-        let results = search.videos.slice(0, 5)
-        
-        if (!results.length) return m.reply('❌ No encontré resultados.')
+    if (!text) return m.reply('⛈️ *RAYO PREM GOOGLE* 🌙\n\n⚡ *¿Qué quieres buscar en Google?*') // Cambiado
 
-        let txt = `*Nox Bot 🌃 - Buscador*\n`
-        txt += `_Consultando: ${text}_\n\n`
-        
+    await m.react('🔍')
+
+    try {
+        let { data } = await axios.get(`https://api.delirius.store/search/google?query=${encodeURIComponent(text)}`)
+        let results = data.data.slice(0, 5)
+
+        if (!results.length) return m.reply('⛈️ *RAYO PREM ERROR* ➔ *No encontré resultados.*') // Cambiado
+
+        let txt = `⛈️ *RAYO PREM GOOGLE* 🌙\n` // Cambiado
+        txt += `⚡ *Buscando:* ${text}\n\n`
+
         txt += results.map((v, i) => {
-            return `*${i + 1}. ${v.title}*\n🕒 Duración: ${v.timestamp}\n🔗 ${v.url}`
+            return `🌩️ *${i + 1}. ${v.title}*\n` +
+                   `📝 ${v.description}\n` +
+                   `🔗 ${v.url}`
         }).join('\n\n')
+
+        txt += `\n\n🌩️ *Team Nightwish*` // Cambiado
 
         await conn.reply(m.chat, txt, m)
         await m.react('✅')
-        
+
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply('⚠️ *Error:* No se pudo realizar la búsqueda.')
+        m.reply('⛈️ *RAYO PREM ERROR* ➔ *Error al realizar la búsqueda.*') // Cambiado
     }
 }
 
