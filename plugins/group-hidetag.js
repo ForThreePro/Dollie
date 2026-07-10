@@ -23,11 +23,11 @@ let handler = async (m, { conn, text, participants }) => {
   let groupName = groupMeta?.subject || "Grupo"
 
   // Watermark RAYO PREM
-  let watermark = `\n\n⛈️ *RAYO PREM* | *${groupName}* 🌙\n⚡ *Team Nightwish*`
+  let watermark = `\n\n`
 
   // Construir el texto final según origen
   let baseText = text || q.text || c || ''
-  let finalText = isFromBot ? baseText : `⛈️ *RAYO PREM AVISO* 🌙\n\n${baseText}${watermark}` // Cambiado
+  let finalText = isFromBot ? baseText : `${baseText}` // Cambiado
 
   const msg = conn.cMod(
     m.chat,
