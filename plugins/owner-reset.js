@@ -1,6 +1,6 @@
 let handler = async (m, { conn }) => {
-    await m.react('🔄')
-    await m.reply('🛸 *[ BOX BOT MD ]* 🌌\n\n> *Reiniciando sistema, por favor espere...*')
+    await m.react('⚡') // Cambiado
+    await m.reply('⛈️ *[ RAYO PREM BOT ]* 🌙\n\n> *Reiniciando sistema con el trueno... Por favor espere*') // Cambiado
     process.send('reset')
 }
 
