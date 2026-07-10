@@ -27,7 +27,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
       { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
       { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
-      { prefijo: '95', bandera: '🇲' }
+      { prefijo: '95', bandera: '🇲🇲' }
     ];
 
     const getCountryFlag = (mem) => {
@@ -50,13 +50,11 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       grouped[flag].push(mem);
     }
 
-    // Ordenar las banderas según el orden definido
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
     // Texto con estética RAYO PREM
-    let messageText = `
-⛈️ *RAYO PREM* ➔ INVOCACIÓN 🌙
-╔════════════════════════════╗
+    let messageText = `⛈️ *RAYO PREM* ➔ INVOCACIÓN 🌙
+╔════════════╗
    🌐 *${groupName}*
 ╚════════════╝
 
@@ -78,14 +76,18 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     messageText += `╰────────────────────────────╯
 
-⛈️ *RAYO PREM* | *Team Nightwish* ⚡
-    `;
+⛈️ *RAYO PREM* | *Team Nightwish* ⚡`;
 
-    // Imagen del trueno
-    const imageUrl = 'https://files.evogb.win/jgBvm8.jpg';
+    // NUEVO: Detectar foto del grupo
+    let img
+    try {
+      img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
+    } catch {
+      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback trueno
+    }
 
     await conn.sendMessage(m.chat, {
-      image: { url: imageUrl },
+      image: { url: img },
       caption: messageText,
       mentions: participants.map(a => a.jid || a.id)
     }, { quoted: m });
@@ -102,4 +104,4 @@ handler.command = /^(todos|invocar|tagall)$/i;
 handler.admin = true;
 handler.group = true;
 
-export default handler;
+export default handler
