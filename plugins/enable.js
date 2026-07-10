@@ -7,12 +7,12 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let bot = global.db.data.settings[conn.user.jid] || {}
   let type = command.toLowerCase()
 
-  if (!args[0]) return m.reply(`🛸 *[ BOX BOT MD ]* 🌌\n\n⚙️ *Configuración incorrecta.*\n📌 Uso: *${usedPrefix + command} on* o *${usedPrefix + command} off*`)
+  if (!args[0]) return m.reply(`⛈️ *RAYO PREM CONFIG* 🌙\n\n⚡ *Configuración incorrecta.*\n📌 *Uso:* ${usedPrefix + command} on/off\n*Ejemplo:* ${usedPrefix + command} on`) // Cambiado
 
   let fail = false
   switch (type) {
     case 'welcome': case 'bienvenida':
-      if (m.isGroup && !isAdmin) { global.dfail('admin', m, conn); fail = true; break }
+      if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.bienvenida = isEnable
       break
     case 'subbots': case 'serbot':
@@ -24,19 +24,19 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       bot.antiSpam = isEnable
       break
     case 'antilink':
-      if (m.isGroup && !isAdmin) { global.dfail('admin', m, conn); fail = true; break }
+      if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.antiLink = isEnable
       break
     case 'antibot':
-      if (m.isGroup && !isAdmin) { global.dfail('admin', m, conn); fail = true; break }
+      if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.antiBot = isEnable
       break
     case 'modoadmin':
-      if (m.isGroup && !isAdmin) { global.dfail('admin', m, conn); fail = true; break }
+      if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.modoadmin = isEnable
       break
     case 'nsfw': case 'antinopor':
-      if (m.isGroup && !isAdmin) { global.dfail('admin', m, conn); fail = true; break }
+      if (m.isGroup &&!isAdmin) { global.dfail('admin', m, conn); fail = true; break }
       chat.nsfw = isEnable
       break
     case 'audios':
@@ -64,15 +64,16 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
     catalogoImg = { url: 'https://files.catbox.moe/t7uytz.png' }
   }
 
-  let estadoTexto = isEnable ? 'Activado 🌀' : 'Desactivado ✖️'
+  let estadoTexto = isEnable? 'Activado ⚡' : 'Desactivado 🌑' // Cambiado
+  let emoji = isEnable? '🌩️' : '⛈️' // Cambiado
 
-  let statusTxt = `🛸 *[ BOX BOT MD ]* 🌌\n\n`
-  statusTxt += `⚙️ *Función:* ${type}\n`
+  let statusTxt = `${emoji} *RAYO PREM CONFIG* 🌙\n\n` // Cambiado
+  statusTxt += `⚡ *Función:* ${type}\n`
   statusTxt += `📊 *Estado:* ${estadoTexto}\n\n`
-  statusTxt += `⚙️ *Box Bot MD • Sistema Automatizado* 🌀`
+  statusTxt += `⛈️ *Team Nightwish*` // Cambiado
 
   await conn.sendMessage(m.chat, {
-    image: catalogoImg.byteLength ? catalogoImg : { url: catalogoImg.url },
+    image: catalogoImg.byteLength? catalogoImg : { url: catalogoImg.url },
     caption: statusTxt,
     mentions: [m.sender]
   }, { quoted: m })
