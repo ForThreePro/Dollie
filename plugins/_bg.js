@@ -13,14 +13,20 @@ let mime = (q.msg || q).mimetype || q.mediaType || ''
 if (/image/g.test(mime) && !/webp/g.test(mime)) {
 let buffer = await q.download()
 let media = await uploadImage(buffer)
-json = await (await fetch(`https://btch.us.kg/removebg?url=${media}`)).json()
+
+// CAMBIO 1: API NUEVA
+let res = await fetch(`https://api.siputzx.my.id/api/iloveimg/removebg?image=${encodeURIComponent(media)}`)
+json = { result: { urls: res.url } // siputzx devuelve directo la url
+
 stiker = await sticker(false, json.result.urls, f, g)
+
 } else if (text) {
-json = await (await fetch(`https://btch.us.kg/removebg?url=${text.trim()}`)).json()
+// CAMBIO 2: API NUEVA PARA URL
+let res = await fetch(`https://api.siputzx.my.id/api/iloveimg/removebg?image=${encodeURIComponent(text.trim())}`)
+json = { result: { urls: res.url } }
+
 } else return m.reply('*Responde a una imagen o ingresa una url que sea `(jpg, jpeg o png)` para quitar el fondo*')
 
-//await mensajesEditados(conn, m)
-//await conn.sendMessage(m.chat, { text: waitttttt, edit: key })
 await conn.sendMessage(m.chat, {image: {url: json.result.urls}, caption: null}, {quoted: m})
 await conn.sendFile(
 m.chat,
