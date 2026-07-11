@@ -2,19 +2,41 @@ const linkRegex = /chat\.whatsapp\.com\/(?:invite\/)?([0-9A-Za-z]{20,24})/i
 const channelLinkRegex = /whatsapp\.com\/channel\/([0-9A-Za-z]{20,30})/i
 
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
-    if (!isAdmin &&!isOwner) throw "⛈️ *RAYO PREM ERROR* ➔ *Solo los administradores pueden usar este comando.*" // Cambiado
+    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ 🛡️ *ACCESO DENEGADO*
+│ Solo *ADMINS* pueden usar esto
+╰─────────────────❒`
 
     let chat = global.db.data.chats[m.chat]
     if (!chat) global.db.data.chats[m.chat] = {}
 
     if (/on/i.test(args[0])) {
         chat.antiLink = true
-        await conn.reply(m.chat, "⛈️ *RAYO PREM ANTI-LINK* 🌙\n\n⚡ *ANTI-LINK ACTIVADO*\n\n🌩️ *Ahora se eliminarán links de grupos y canales*\n⛈️ *Team Nightwish*", m) // Cambiado
+        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⚡ *ANTI-LINK ACTIVADO*
+│
+│ 🌙 *Estado:* ENCENDIDO
+│ 🛡️ *Bloqueo:* Grupos + Canales
+│ ⛈️ *El trueno vigila el grupo*
+╰─────────────────❒`, m)
     } else if (/off/i.test(args[0])) {
         chat.antiLink = false
-        await conn.reply(m.chat, "⛈️ *RAYO PREM ANTI-LINK* 🌙\n\n❌ *ANTI-LINK DESACTIVADO*\n\n🌩️ *Ya se pueden enviar links*", m) // Cambiado
+        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ❌ *ANTI-LINK DESACTIVADO*
+│
+│ 🌙 *Estado:* APAGADO
+│ ✅ *Ya se pueden enviar links*
+╰─────────────────❒`, m)
     } else {
-        await conn.reply(m.chat, `⛈️ *RAYO PREM ANTI-LINK* 🌙\n\n📌 *Uso:* *.antilink on* / *.antilink off*\n⚡ *Bloquea links de grupos y canales*`, m) // Cambiado
+        await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ 🌩️ *PANEL ANTI-LINK*
+│
+│ 📌 *Uso:*.antilink on /.antilink off
+│ ⚡ *Función:* Bloquea links externos
+│ 🛡️ *Protege:* Spam de grupos y canales
+│
+│ 🌙 *Mantén limpio el grupo*
+╰─────────────────❒`, m)
     }
 }
 
@@ -45,7 +67,15 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin }) {
         await conn.sendMessage(m.chat, { delete: m.key })
         await conn.reply(
             m.chat,
-            `⛈️ *RAYO PREM ANTI-LINK* 🌙\n\n⚡ *¡ENLACE PROHIBIDO!*\n\n🚮 *@${m.sender.split('@')[0]}* fue eliminado por enviar links.\n\n> *Regla:* Nada de spam externo ⚡`, // Cambiado
+            `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+│ ⛈️ *¡ENLACE PROHIBIDO!*
+│
+│ 🚮 *Usuario:* @${m.sender.split('@')[0]}
+│ ⚡ *Motivo:* Enviar link externo
+│ 🛡️ *Acción:* Expulsado del grupo
+│
+│ > *Regla:* Nada de spam 🌙*
+╰─────────────────❒`,
             m,
             { mentions: [m.sender] }
         )
