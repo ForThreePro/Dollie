@@ -1,66 +1,84 @@
-import axios from 'axios';
-import FormData from 'form-data';
-import { downloadContentFromMessage } from '@whiskeysockets/baileys';
-async function getImageBuffer(message) {
-    const quoted = message.message?.extendedTextMessage?.contextInfo?.quotedMessage;
-    const imageMessage = quoted?.imageMessage || message.message?.imageMessage;
-    if (!imageMessage)
-        return null;
-    const stream = await downloadContentFromMessage(imageMessage, 'image');
-    const chunks = [];
-    for await (const chunk of stream)
-        chunks.push(chunk);
-    return Buffer.concat(chunks);
-}
-export default {
-    command: 'removebg',
-    aliases: ['rmbg', 'bgremove'],
-    category: 'tools',
-    description: 'Remove background from an image',
-    usage: '.removebg (reply to image or send image with caption)',
-    async handler(sock, message, args, context) {
-        const chatId = context.chatId || message.key.remoteJid;
-        try {
-            const imageBuffer = await getImageBuffer(message);
-            if (!imageBuffer) {
-                return await sock.sendMessage(chatId, {
-                    text: '📸 *Remove Background*\n\nUsage:\n' +
-                        '• Reply to an image with `.removebg`\n' +
-                        '• Send image with caption `.removebg`'
-                }, { quoted: message });
-            }
-            const apiKey = process.env.REMOVEBG_KEY;
-            if (!apiKey) {
-                return await sock.sendMessage(chatId, {
-                    text: '❌ RemoveBG API key not configured.'
-                }, { quoted: message });
-            }
-            const form = new FormData();
-            form.append('size', 'auto');
-            form.append('image_file', imageBuffer, {
-                filename: 'image.jpg',
-                contentType: 'image/jpeg'
-            });
-            const response = await axios.post('https://api.remove.bg/v1.0/removebg', form, {
-                headers: { ...form.getHeaders(), 'X-Api-Key': apiKey },
-                responseType: 'arraybuffer',
-                timeout: 60000
-            });
-            await sock.sendMessage(chatId, {
-                image: response.data,
-                caption: '✨ *Background removed successfully*\n\n𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗕𝗬 𝗚𝗔𝗔𝗝𝗨-𝗠𝗗'
-            }, { quoted: message });
+import { Blob } from 'node:buffer';
+import { FormData } from 'formdata-node';
+import fetch from 'node-fetch';
+
+let handler = async (m, { conn, usedPrefix, command }) => {
+    let q = m.quoted? m.quoted : m;
+    let mime = (q.msg || q).mimetype || q.mediaType || '';
+
+    if (!mime) throw `⚡ *Rayo Prem Bot* 🍓\n\nResponde a una imagen con *${usedPrefix + command}*`;
+    if (!/image\/(jpe?g|png)/.test(mime)) {
+        throw `⚠️ *Formato ${mime} no soportado.* Solo JPG/PNG`;
+    }
+
+    const API_KEY = "FEx4CYmYN1QRQWD1mbZp87jV";
+
+    await m.react('⏳');
+    await m.reply('⚡ *Activando modo rayo... quitando fondo*');
+
+    try {
+        let img = await q.download();
+        if (img.length > 12 * 1024 * 1024) {
+            throw '❌ *Imagen muy pesada.* Máximo 12MB';
         }
-        catch (err) {
-            console.error('RemoveBG Error:', err?.response?.data || err.message);
-            let msg = '❌ Failed to remove background.';
-            if (err.response?.status === 402)
-                msg = '💳 API quota exceeded.';
-            else if (err.response?.status === 401)
-                msg = '🔑 Invalid API key.';
-            else if (err.code === 'ECONNABORTED')
-                msg = '⏰ Request timeout. Try again.';
-            await sock.sendMessage(chatId, { text: msg }, { quoted: message });
+
+        let form = new FormData();
+        form.append('image_file', new Blob([img]), {
+            filename: 'image.png',
+            contentType: mime
+        });
+        form.append('size', 'auto'); // auto, preview, full, 4k
+        form.append('bg_color', 'transparent');
+
+        let res = await fetch('https://api.remove.bg/v1.0/removebg', {
+            method: 'POST',
+            headers: {
+                'X-Api-Key': API_KEY
+            },
+            body: form
+        });
+
+        if (!res.ok) {
+            let errorText = await res.text();
+            let errorMsg = '❌ Error desconocido';
+
+            switch (res.status) {
+                case 400: errorMsg = '❌ Imagen no válida o formato no soportado'; break;
+                case 401: errorMsg = '❌ API Key inválida'; break;
+                case 402: errorMsg = '❌ Créditos de API agotados. Recarga en remove.bg'; break;
+                case 403: errorMsg = '❌ Acceso denegado a la API'; break;
+                case 429: errorMsg = '❌ Demasiadas peticiones. Espera 1 minuto'; break;
+                default: errorMsg = `❌ Error del servidor: ${res.status}\n${errorText}`;
+            }
+            throw errorMsg;
         }
+
+        let processedImg = await res.arrayBuffer();
+        if (processedImg.length === 0) {
+            throw '❌ La API devolvió una imagen vacía';
+        }
+
+        await conn.sendFile(
+            m.chat,
+            Buffer.from(processedImg),
+            'rayo_prem.png',
+            '✨ *Fondo eliminado con éxito* ✨\n\n⚡ *Rayo Prem Bot | Team Nightwish*',
+            m
+        );
+
+        await m.react('✅');
+
+    } catch (error) {
+        console.error('Remove.bg Error:', error);
+        let errorMsg = typeof error === 'string'? error : '❌ Error al quitar el fondo. Intenta de nuevo.';
+        await m.reply(errorMsg);
+        await m.react('❌');
     }
 };
+
+handler.help = ['removebg', 'quitafondo'];
+handler.tags = ['tools'];
+handler.command = ['removebg', 'quitafondo', 'nobg', 'rmbg'];
+handler.register = false;
+
+export default handler;
