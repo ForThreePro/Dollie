@@ -1,10 +1,10 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ⛈️ *ACCESO DENEGADO*
 │
 │ ⚡ *Solo los admins o el dueño*
-│ 🌙 *pueden invocar este trueno*
+│ 👾 *pueden configurar esto*
 ╰─────────────────❒`);
     }
 
@@ -13,7 +13,7 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setwelcome') {
-        if (!text) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        if (!text) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ 🌩️ *CONFIGURAR BIENVENIDA*
 │
 │ ⚡ *Falta el mensaje*
@@ -25,12 +25,12 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
 │ @desc = Descripción
 │
 │ 💡 *Ejemplo:*
-│ .setwelcome ⛈️ @user invocó el trueno ⚡
+│ .setwelcome ⛈️ Bienvenido @user
 │ 🌩️ Bienvenido a @group
-│ 👥 Eres el guerrero #@count
+│ 👥 Eres el miembro #@count
 ╰─────────────────❒`);
         chat.customWelcome = text.trim();
-        return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ✅ *BIENVENIDA GUARDADA*
 │
 │ 📝 *Vista previa:*
@@ -40,13 +40,13 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
 ╰─────────────────❒`);
     }
     if (command === 'delwelcome') {
-        if (!chat.customWelcome) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        if (!chat.customWelcome) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ⚠️ *SIN BIENVENIDA*
 │
-│ 🌙 *No tienes una bienvenida editada*
+│ 👾 *No tienes una bienvenida editada*
 ╰─────────────────❒`);
         delete chat.customWelcome;
-        return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ✅ *BIENVENIDA ELIMINADA*
 │
 │ 🗑️ *Se borró el mensaje personalizado*
