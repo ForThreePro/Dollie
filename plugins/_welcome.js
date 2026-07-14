@@ -48,56 +48,56 @@ export async function before(m, { conn }) {
 
     let text = '', audioFile = '';
 
-    // [SWITCH DISEÑO TEAM NIGHTWISH]
+    // [SWITCH DISEÑO RICKY BOT PREM]
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
       audioFile = './bienvenida.mp3';
       text = chat.customWelcome
-  ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
-│ 🌙 *NUEVO INTEGRANTE*
+ ? chat.customWelcome.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
+│ 👾 *NUEVO INTEGRANTE*
 │
 │ ⚡ *Bienvenido:* ${user}
-│ ⛈️ *Acaba de unirse a la tormenta*
+│ ⛈️ *Acaba de unirse al grupo*
 │
 │ 🎮 *Grupo:* ${groupName}
 │ 👥 *Miembros:* ${groupMembers}
 │ 📜 *Descripción:* ${groupDesc}
 │
-│ > *“Que el trueno te guíe en la noche”*
+│ > *“Bienvenido al grupo”*
 ╰─────────────────❒`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
       audioFile = './despedida.mp3';
       text = chat.customBye
-  ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+ ? chat.customBye.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ 💨 *SALIDA REGISTRADA*
 │
 │ 🌫️ *Se fue:* ${user}
-│ ⛈️ *Abandonó la tormenta*
+│ ⛈️ *Abandonó el grupo*
 │
 │ 🎮 *Grupo:* ${groupName}
 │ 👥 *Quedan:* ${groupMembers}
 │ 📜 *Motivo:* Salida voluntaria
 │
-│ > *“Que los vientos nocturnos lo acompañen”*
+│ > *“Hasta pronto”*
 ╰─────────────────❒`.trim();
 
     } else if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
       audioFile = './kick.mp3';
       text = chat.customKick
-  ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
-        : `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+ ? chat.customKick.replace(/@user/gi, user).replace(/@group/gi, groupName).replace(/@count/gi, groupMembers).replace(/@desc/gi, groupDesc)
+        : `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ 🚮 *EXPULSIÓN EJECUTADA*
 │
 │ 💣 *Eliminado:* ${user}
-│ ⚡ *Juicio del trueno aplicado*
+│ ⚡ *Reglas del grupo aplicadas*
 │
 │ 🎮 *Grupo:* ${groupName}
 │ 👥 *Quedan:* ${groupMembers}
-│ 📜 *Motivo:* Violó las leyes del grupo
+│ 📜 *Motivo:* Violó las reglas del grupo
 │
-│ > *“El rayo no perdona la traición”*
+│ > *“Expulsión registrada”*
 ╰─────────────────❒`.trim();
     } else return true;
 
