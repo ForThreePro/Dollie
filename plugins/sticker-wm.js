@@ -1,22 +1,24 @@
 import { addExif } from '../lib/sticker.js'
 
+const MARCA = 'Ricky Bot Prem 👾'
+
 let handler = async (m, { conn, text }) => {
-  if (!m.quoted) return conn.reply(m.chat, `⚡ *RAYO PREM* ➔ Responde a un *sticker* para robarlo.`, m) // Cambiado
+  if (!m.quoted) return conn.reply(m.chat, `👾 *${MARCA}* ➔ Responde a un *sticker* para robarlo.`, m)
   let stiker = false
   try {
     let [packname, ...author] = text.split('|')
     author = (author || []).join('|')
     let mime = m.quoted.mimetype || ''
-    if (!/webp/.test(mime)) return conn.reply(m.chat, `⚡ *RAYO PREM* ➔ Eso no es un *sticker*. Responde a un sticker.`, m) // Cambiado
+    if (!/webp/.test(mime)) return conn.reply(m.chat, `👾 *${MARCA}* ➔ Eso no es un *sticker*. Responde a un sticker.`, m)
     let img = await m.quoted.download()
-    if (!img) return conn.reply(m.chat, `⚡ *RAYO PREM* ➔ No pude descargar el *sticker*.`, m) // Cambiado
-    stiker = await addExif(img, packname || 'Team Nightwish', author || 'Whois Yallico') // Cambiado: marca por defecto
+    if (!img) return conn.reply(m.chat, `👾 *${MARCA}* ➔ No pude descargar el *sticker*.`, m)
+    stiker = await addExif(img, packname || MARCA, author || MARCA) // Marca por defecto
   } catch (e) {
     console.error(e)
     if (Buffer.isBuffer(e)) stiker = e
   } finally {
-    if (stiker) conn.sendFile(m.chat, stiker, 'wm.webp', '⚡ *Rayo Prem* | Sticker reclamado', m) // Cambiado caption
-    else return conn.reply(m.chat, `⚡ *RAYO PREM* ➔ Error al procesar el *sticker*.`, m) // Cambiado
+    if (stiker) conn.sendFile(m.chat, stiker, 'RickyWM.webp', `👾 *${MARCA}* | Sticker reclamado`, m)
+    else return conn.reply(m.chat, `👾 *${MARCA}* ➔ Error al procesar el *sticker*.`, m)
   }
 }
 handler.help = ['wm <nombre>|<autor>']
