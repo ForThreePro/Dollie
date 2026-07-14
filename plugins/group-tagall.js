@@ -5,7 +5,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return;
     }
 
-    const customMessage = args.join(' ') || '⛈️ Invocación del Trueno';
+    const customMessage = args.join(' ') || '👾 Invocación General';
     const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
     const groupName = groupMetadata.subject;
 
@@ -52,13 +52,13 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // Texto con estética Team Nightwish
-    let messageText = `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+    // Texto con estética Ricky Bot Prem
+    let messageText = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ 📢 *INVOCACIÓN GENERAL*
 │
 │ 🌐 *Grupo:* ${groupName}
 │ ⚡ *Integrantes:* ${participants.length}
-│ 🌙 *Mensaje:* ${customMessage}
+│ 👾 *Mensaje:* ${customMessage}
 │
 ├─❒ *INTEGRANTES POR PAÍS* ❒
 `;
@@ -75,7 +75,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     messageText += `╰─────────────────❒
 │
-│ > *“Que el trueno los reúna”*
+│ > *“Ricky Bot Prem al servicio del grupo”*
 ╰─────────────────❒`;
 
     // NUEVO: Detectar foto del grupo
@@ -83,7 +83,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     try {
       img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
     } catch {
-      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback trueno
+      img = 'https://files.evogb.win/jgBvm8.jpg' // Fallback
     }
 
     await conn.sendMessage(m.chat, {
@@ -93,8 +93,8 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.error("[ERROR EN NIGHTWISH]:", error);
-    conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+    console.error("[ERROR EN RICKY BOT]:", error);
+    conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ⛈️ *ERROR*
 │
 │ ⚡ *Ocurrió un error al ejecutar el comando*
