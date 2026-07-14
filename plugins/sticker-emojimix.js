@@ -1,28 +1,43 @@
-import MessageType from '@whiskeysockets/baileys'
-import fetch from 'node-fetch'
+import axios from 'axios'
 import { sticker } from '../lib/sticker.js'
-import fs from "fs"
-const fetchJson = (url, options) => new Promise(async (resolve, reject) => {
-fetch(url, options)
-.then(response => response.json())
-.then(json => {
-resolve(json)
-})
-.catch((err) => {
-reject(err)
-})})
-let handler = async (m, { conn, text, args, usedPrefix, command }) => {
-if (!args[0]) return m.reply(`✨ Ejemplo: *${usedPrefix + command}* 😎+🤑`)
-let [emoji, emoji2] = text.split`+`
-let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji)}_${encodeURIComponent(emoji2)}`)
-for (let res of anu.results) {
-let stiker = await sticker(false, res.url, global.packname, global.author)
-conn.sendFile(m.chat, stiker, null, { asSticker: true }, m)
-}}
-handler.help = ['emojimix *<emoji+emoji>*']
-handler.tags = ['sticker']
-handler.command = ['emojimix'] 
-//handler.limit = 1
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text || !text.includes('+')) {
+        return m.reply(`⚡ *Team Nightwish - Rayo Prem Bot* ⚡\n\n✨ Ejemplo: *${usedPrefix + command}* 😎+🤑\n\nNo todos los emojis tienen combinación`)
+    }
+
+    let [emoji1, emoji2] = text.split`+`
+    emoji1 = emoji1.trim()
+    emoji2 = emoji2.trim()
+
+    if (!emoji1 || !emoji2) return m.reply(`Falta 1 emoji. Ejemplo: ${usedPrefix + command} 😈+😏`)
+
+    await conn.sendMessage(m.chat, { react: { text: '⚡', key: m.key } })
+
+    try {
+        // Convertir emoji a código hex para Gboard
+        const getCode = (e) => [...e].map(c => c.codePointAt(0).toString(16)).join('-')
+        let e1 = getCode(emoji1)
+        let e2 = getCode(emoji2)
+        
+        // URL de Gboard Emoji Kitchen
+        let url = `https://www.gstatic.com/android/keyboard/emojikitchen/20240222/u/${e1}/u${e1}_u${e2}.png`
+
+        let res = await axios.get(url, { responseType: 'arraybuffer', timeout: 10000 })
+        let stiker = await sticker(res.data, false, 'Team Nightwish', 'Rayo Prem Bot')
+
+        await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+        await conn.sendFile(m.chat, stiker, 'emojimix.webp', '', m, { asSticker: true })
+
+    } catch (e) {
+        await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
+        m.reply(`💀 Esa combinación no existe\nPrueba estas que sí hay:\n😂+😭  😈+😏  🥵+❤️  🥺+👉👈`)
+    }
+}
+
+handler.help = ['emojimix <emoji+emoji>']
+handler.tags = ['sticker', 'nightwish']
+handler.command = ['emojimix', 'mix']
 handler.register = false
 
 export default handler
