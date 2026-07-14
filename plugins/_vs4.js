@@ -6,7 +6,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
         const groupAdmins = participants.filter(p => p.admin)
         const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
 
-        let text = `🌙✧･ﾟ: *🌌 𝙶𝙳𝙲 - 𝚃𝙴𝙰𝙼 𝙽𝙸𝙶𝙷𝚃𝚆𝙸𝚂𝙷 🌌* :ﾟ･✧🌙
+        let text = `👾✧･ﾟ: *🌌 𝙶𝙳𝙲 - 𝚁𝙸𝙲𝙺𝚈 𝙱𝙾𝚃 𝙿𝚁𝙴𝙼 🌌* :ﾟ･✧👾
 
 👑 𝗖𝗟𝗔𝗡: ${groupMetadata.subject}
 ⏰ 𝗛𝗢𝗥𝗔𝗥𝗜𝗢: __:__ 🇦🇷 / __:__ 🇵🇪
@@ -54,7 +54,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
 │⚜️ ➤ ・
 │⚜️ ➤ ・
 │
-│ㅤ🌙 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦:
+│ㅤ👾 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦:
 │💜 ➤ ・
 │💜 ➤ ・
 │💜 ➤ ・
@@ -63,7 +63,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
 │💜 ➤ ・
 ╰─────────────╯
 
-🌙✧･ﾟ: *Llenen y copien* :ﾟ･✧🌙`.trim()
+👾✧･ﾟ: *Llenen y copien* :ﾟ･✧👾`.trim()
 
         return await conn.sendFile(m.chat, pp, 'gdc.jpg', text, m, false, { mentions: [...groupAdmins.map(v => v.id), owner] })
     }
@@ -82,7 +82,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
         listaSuplentes += `💜 ${i}. ・\n`
     }
 
-    let plantilla = `🌙✧･ﾟ: *🌌 𝚃𝙴𝙰𝙼 𝙽𝙸𝙶𝙷𝚃𝚆𝙸𝚂𝙷 🌌* :ﾟ･✧🌙
+    let plantilla = `👾✧･ﾟ: *🌌 𝚁𝙸𝙲𝙺𝚈 𝙱𝙾𝚃 𝙿𝚁𝙴𝙼 🌌* :ﾟ･✧👾
 
 👑 𝗘𝗡𝗖𝗔𝗥𝗚𝗔𝗗𝗔: ・
 ⏰ 𝗛𝗢𝗥𝗔: __:__ 🇦🇷 / __:__ 🇵🇪
@@ -100,7 +100,7 @@ ${listaSuplentes}
 ───────────────
 💎 ・
 
-🌙✧･ﾟ: *Llenen y copien* :ﾟ･✧🌙`
+👾✧･ﾟ: *Llenen y copien* :ﾟ･✧👾`
 
     await conn.sendMessage(m.chat, { text: plantilla }, { quoted: m })
 }
