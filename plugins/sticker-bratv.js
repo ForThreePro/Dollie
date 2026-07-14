@@ -2,7 +2,7 @@ import { sticker, addExif } from '../lib/sticker.js'
 import axios from 'axios'
 import fetch from 'node-fetch'
 
-const MARCA = 'For Three Bot 🌀' // <- TU MARCA
+const MARCA = 'Ricky Bot Prem 👾' // <- TU MARCA
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 const fetchSticker = async (text, attempt = 1) => {
@@ -104,7 +104,7 @@ conn.sendMessage(m.chat, { text: `⚠︎ Se ha producido un problema.\n> Usa *${
 }}
 
 handler.tags = ['sticker']
-handler.help = ['bratv']
-handler.command = ['bratv']
+handler.help = ['brat', 'bratv', 'emojimix', 'qc', 'take', 'wm']
+handler.command = ['brat', 'bratv', 'emojimix', 'qc', 'take', 'wm']
 
 export default handler
