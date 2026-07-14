@@ -10,36 +10,36 @@ let handler = async (m, { conn, isOwner, isAdmin, isROwner, command }) => {
 
   switch (type) {
     case 'banchat': case 'banearchat':
-      if (chat.isBanned) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+      if (chat.isBanned) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ⛈️ *ESTADO DEL GRUPO*
 │
 │ ⚡ *Este chat ya se encuentra baneado*
-│ 🌙 *El bot está inactivo aquí*
+│ 👾 *El bot está inactivo aquí*
 ╰─────────────────❒`)
       chat.isBanned = true
-      await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+      await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ 🚫 *CHAT BANEADO*
 │
 │ ⚡ *El bot ha sido desactivado en este grupo*
-│ 🌙 *No responderé a ningún comando*
+│ 👾 *No responderé a ningún comando*
 │ ⛈️ *Desbaneen para reactivarme*
 ╰─────────────────❒`, m)
       break
 
     case 'unbanchat': case 'desbanearchat':
-      if (!chat.isBanned) return m.reply(`╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+      if (!chat.isBanned) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ✅ *ESTADO DEL GRUPO*
 │
 │ ⚡ *Este chat no está baneado*
-│ 🌙 *El bot está activo*
+│ 👾 *El bot está activo*
 ╰─────────────────❒`)
       chat.isBanned = false
-      await conn.reply(m.chat, `╭─❒ *『 𝗧𝗘𝗔𝗠 𝗡𝗜𝗚𝗛𝗧𝗪𝗜𝗦𝗛 』* ❒
+      await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
 │ ✅ *CHAT DESBANEADO*
 │
 │ ⚡ *El bot vuelve a estar activo*
-│ 🌙 *Todos los comandos disponibles*
-│ ⛈️ *El trueno ha regresado*
+│ 👾 *Todos los comandos disponibles*
+│ ⛈️ *Ricky Bot Prem activado*
 ╰─────────────────❒`, m)
       break
 
