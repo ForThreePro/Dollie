@@ -3,52 +3,8 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
 
-// COMANDOS
-let handler = async (m, { conn, command, args }) => {
-    if (!m.isGroup) return m.reply('😎 Solo funciona en grupos rey 🫂')
-    if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {}
-    let chat = global.db.data.chats[m.chat]
+let handler = async () => {}
 
-    // command = on/off | args[0] = welcome/bye/kick
-    if (!command ||!args[0]) {
-        let w = chat.welcome? '😎 ON' : '🫂 OFF'
-        let b = chat.bye? '😎 ON' : '🫂 OFF'
-        let k = chat.kick? '😎 ON' : '🫂 OFF'
-        return conn.reply(m.chat, `╭─ 😎 𝗥𝗜𝗖𝗞𝗬 𝗣𝗥𝗘𝗠 𝗕𝗢𝗧 🫂 ─╮
-│
-│ 🔥 *Panel de Control*
-│
-│ 1. Bienvenidas : ${w}
-│ 2. Despedidas : ${b}
-│ 3. Expulsiones : ${k}
-│
-│ *Comandos*
-│.on welcome /.off welcome
-│.on bye /.off bye
-│.on kick /.off kick
-│
-╰──────── 😎 ────────╯`, m)
-    }
-
-    let accion = command.toLowerCase()
-    let tipo = args[0].toLowerCase()
-
-    if (accion!== 'on' && accion!== 'off') return m.reply('😎 Usa:.on welcome o.off welcome rey')
-    if (!['welcome','bye','kick'].includes(tipo)) return m.reply('😎 Tipo inválido. Usa: welcome, bye, kick rey')
-
-    chat = accion === 'on'
-    let icon = chat? '😎' : '🫂'
-    let nombre = tipo === 'welcome'? 'Bienvenidas' : tipo === 'bye'? 'Despedidas' : 'Expulsiones'
-    m.reply(`${icon} *${nombre}* ${chat? 'activadas rey' : 'desactivadas mano'}`)
-}
-handler.command = /^(on|off)$/i
-handler.help = ['on/off welcome', 'on/off bye', 'on/off kick']
-handler.tags = ['welcome']
-handler.admin = true
-handler.group = true
-export default handler
-
-// DETECTOR
 handler.before = async function (m, { conn }) {
     if (!m.messageStubType ||!m.isGroup) return
     if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {}
@@ -86,46 +42,55 @@ handler.before = async function (m, { conn }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
         if (chat.welcome == false) return
         audio = 'bienvenida.mp3'
-        txt = `╭─ 😎 *Llegó Gente Fina* 🫂 ─╮
+        txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
 │
-│ 🔥 *Bro:* ${user}
-│ 😎 *Grupo:* ${metadata.subject}
-│ 🫂 *Somos:* ${metadata.participants.length} en la sala
+│ 🥥 *Nuevo Miembro Conectado*
 │
-│ "Bienvenido rey~
-│ Pásala bien aquí 😎"
+│ 👤 *Usuario:* ${user}
+│ 🪩 *Grupo:* ${metadata.subject}
+│ 📊 *Total:* ${metadata.participants.length} miembros
 │
-╰─────────────────────╯`
+│ "Bienvenido a la familia ⚡
+│ Pasa y ponte cómodo 🥥"
+│
+│ > *Ricki Prem Dice: Nuevo nodo agregado*
+╰─────────────────❒`
     }
 
     // BYE
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
         if (chat.bye == false) return
         audio = 'despedida.mp3'
-        txt = `╭─ 🫂 *Se Fue Un Bro* 😎 ─╮
+        txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
 │
-│ 🔥 *Bro:* ${user}
-│ 😎 *Grupo:* ${metadata.subject}
-│ 🫂 *Quedamos:* ${metadata.participants.length} en la sala
+│ 🪩 *Desconexión Registrada*
 │
-│ "Cuídate rey, vuelve pronto 😎"
+│ 👤 *Usuario:* ${user}
+│ 🥥 *Grupo:* ${metadata.subject}
+│ 📊 *Quedan:* ${metadata.participants.length} miembros
 │
-╰───────────────────╯`
+│ "Nos vemos pronto ⚡"
+│
+│ > *Ricki Prem Dice: Nodo desconectado*
+╰─────────────────❒`
     }
 
     // KICK
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
         if (chat.kick == false) return
         audio = 'kick.mp3'
-        txt = `╭─ 😎 *Baneado* 🫂 ─╮
+        txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
 │
-│ 🔥 *Bro:* ${user}
-│ ⚠️ *Motivo:* Rompió reglas
-│ 😎 *Grupo:* ${metadata.subject}
+│ 🐆 *Expulsión Ejecutada*
 │
-│ "Aquí se respeta o se va 🫂"
+│ 👤 *Usuario:* ${user}
+│ ⚠️ *Motivo:* Violación de protocolos
+│ 🪩 *Grupo:* ${metadata.subject}
 │
-╰───────────────────╯`
+│ "Aquí se respetan las reglas ⚡"
+│
+│ > *Ricki Prem Dice: Protocolo de seguridad aplicado*
+╰─────────────────❒`
     }
 
     if (!txt) return
@@ -148,3 +113,5 @@ handler.before = async function (m, { conn }) {
         }, 1500)
     }
 }
+
+export default handler
