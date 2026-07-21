@@ -7,7 +7,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
     if (!m.messageStubType ||!m.isGroup) return
 
     let chat = global.db.data.chats[m.chat]
-    if (!chat?.detect) return
+    if (!chat?.detect) return // solo funciona si detect esta ON
 
     const userJid = m.sender
     const usuario = `@${userJid.split('@')[0]}`
@@ -17,115 +17,82 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 👾 *REGISTRO DEL GRUPO*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 🥥 *Ricki Prem Dice: registro del sistema*
 │
-│ 📢 *CAMBIO DE NOMBRE*
-│ 👤 *Usuario:* ${usuario}
-│ 📝 *Nuevo:* _${m.messageStubParameters[0]}_
-│ 🌩️ *Grupo:* ${group}
+│ 📢 *cambio de nombre*
+│ 👤 *usuario:* ${usuario}
+│ 📝 *nuevo:* _${m.messageStubParameters[0]}_
+│ 💻 *grupo:* ${group}
 │
-│ > *“Ricky ha registrado el cambio”* ⚡
+│ > *🪩 Ricki Prem Dice: sistema renombrado correctamente*
 ╰─────────────────❒`; break
 
         case 22: // Cambiar foto
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 👾 *REGISTRO DEL GRUPO*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 🐆 *Ricki Prem Dice: registro del sistema*
 │
-│ 📸 *CAMBIO DE FOTO*
-│ 👤 *Usuario:* ${usuario}
-│ 🖼️ *Nueva imagen establecida*
-│ 🌩️ *Grupo:* ${group}
+│ 📸 *cambio de foto*
+│ 👤 *usuario:* ${usuario}
+│ 🖼️ *nueva imagen establecida*
+│ 💻 *grupo:* ${group}
 │
-│ > *“Imagen actualizada correctamente”* ⚡
+│ > *💿 Ricki Prem Dice: imagen actualizada en el sistema*
 ╰─────────────────❒`; break
 
         case 23: // Cambiar link
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ALERTA DE SEGURIDAD*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 🪩 *Ricki Prem Dice: alerta de seguridad*
 │
-│ 🔗 *LINK RESETEADO*
-│ 👤 *Usuario:* ${usuario}
-│ 🌩️ *Grupo:* ${group}
+│ 🔗 *link reseteado*
+│ 👤 *usuario:* ${usuario}
+│ 💻 *grupo:* ${group}
 │
-│ > *“El enlace del grupo fue modificado”* ⚡
+│ > *🥥 Ricki Prem Dice: protocolo de enlace modificado*
 ╰─────────────────❒`; break
 
         case 25: // Cambiar ajustes
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🛡️ *AJUSTES MODIFICADOS*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 💿 *Ricki Prem Dice: ajustes modificados*
 │
-│ 👤 *Usuario:* ${usuario}
-│ ⚙️ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
-│ 📊 *Edición de info de grupo*
+│ 👤 *usuario:* ${usuario}
+│ ⚙️ *permisos:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
+│ 📊 *edicion de info de grupo*
 │
-│ > *“Configuración actualizada”* ⚡
+│ > *🐆 Ricki Prem Dice: permisos del sistema actualizados*
 ╰─────────────────❒`; break
 
         case 26: // Abrir/Cerrar
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 👾 *ESTADO DEL CHAT*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 🥥 *Ricki Prem Dice: estado del sistema*
 │
-│ 👤 *Usuario:* ${usuario}
-│ 🗣️ *Modo:* ${m.messageStubParameters[0] == 'on'? '*SOLO ADMINS* 🔒' : '*TODOS* 🔓'}
-│ 📢 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'CERRADO' : 'ABIERTO'}
+│ 👤 *usuario:* ${usuario}
+│ 🗣️ *modo:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
+│ 📢 *grupo:* ${m.messageStubParameters[0] == 'on'? 'cerrado' : 'abierto'}
 │
-│ > *“Permisos de envío actualizados”* ⚡
+│ > *🪩 Ricki Prem Dice: modo de comunicacion actualizado*
 ╰─────────────────❒`; break
 
         case 29: // Dar admin
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 👑 *NUEVO ADMINISTRADOR*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 🐆 *Ricki Prem Dice: ascenso de rango*
 │
-│ ⚡ *Nuevo Admin:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Otorgado por:* ${usuario}
-│ 🌙 *Rango:* Administrador
+│ ⚡ *nuevo admin:* @${m.messageStubParameters[0].split('@')[0]}
+│ 👤 *otorgado por:* ${usuario}
+│ 💻 *rango:* administrador
 │
-│ > *“Ascenso registrado”* ⚡
+│ > *💿 Ricki Prem Dice: acceso de administrador concedido*
 ╰─────────────────❒`; break
 
         case 30: // Quitar admin
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 📉 *ADMIN REMOVIDO*
+            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+│ 🪩 *Ricki Prem Dice: rango revocado*
 │
-│ 💥 *Admin removido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Ejecutado por:* ${usuario}
-│ 🗑️ *Rango removido*
+│ 💥 *admin removido:* @${m.messageStubParameters[0].split('@')[0]}
+│ 👤 *ejecutado por:* ${usuario}
+│ 🗑️ *permisos eliminados*
 │
-│ > *“Destitución registrada”* ⚡
-╰─────────────────❒`; break
-
-        case WAMessageStubType.GROUP_PARTICIPANT_ADD:
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🌩️ *NUEVO INTEGRANTE*
-│
-│ 🔥 *Bienvenido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👾 *Grupo:* ${group}
-│ ⚡ *Estado:* Ingreso registrado
-│
-│ > *“Bienvenido al grupo”* 👾
-╰─────────────────❒`; break
-
-        case WAMessageStubType.GROUP_PARTICIPANT_LEAVE:
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 💨 *SALIDA REGISTRADA*
-│
-│ 😔 *Se fue:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👾 *Grupo:* ${group}
-│ 🌫️ *Estado:* Abandonó el grupo
-│
-│ > *“Salida registrada”* ⚡
-╰─────────────────❒`; break
-
-        case WAMessageStubType.GROUP_PARTICIPANT_REMOVE:
-            txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🚮 *EXPULSIÓN EJECUTADA*
-│
-│ 💣 *Eliminado:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *Por orden de:* ${usuario}
-│ ⛈️ *Causa:* Violación de reglas
-│
-│ > *“Expulsión ejecutada”* ⚡
+│ > *🥥 Ricki Prem Dice: acceso de administrador revocado*
 ╰─────────────────❒`; break
     }
 
