@@ -6,16 +6,17 @@ let handler = async (m) => {
     const used = process.memoryUsage()
     let cpu = os.loadavg()[0].toFixed(2)
 
-    let info = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 📊 *ESTADO DEL BOT*
+    let info = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *ESTADO DEL BOT*
 │
 │ ⏰ *Uptime:* ${muptime}
 │ 🧠 *RAM Usada:* ${(used.heapUsed / 1024 / 1024).toFixed(2)} MB
-│ ⚡ *Carga CPU:* ${cpu}%
+│ 💫 *Carga CPU:* ${cpu}%
+│ 🖥️ *Plataforma:* ${os.platform()}
 │
-│ 👑 *Desarrollado por:* Whois Yallico
-│ > *“Ricky Bot Prem siempre activo”*
-╰─────────────────❒`
+│ 🎀 *Desarrollado por:* Dollie Team
+│ > *“Dollie Bot siempre activita”* 💫
+╰─────────────────────────╯`
 
     m.reply(info)
 }
@@ -28,8 +29,8 @@ function clockString(ms) {
     return `${d}d ${h}h ${m}m ${s}s`
 }
 
-handler.help = ['info']
+handler.help = ['info', 'estado']
 handler.tags = ['main']
-handler.command = ['info']
+handler.command = ['info', 'estado']
 
 export default handler
