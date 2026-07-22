@@ -6,31 +6,31 @@ let handler = async (m, { conn, args, isOwner }) => {
 
   if (/on/i.test(args[0])) {
     bot.antiSpam = true
-    await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⚡ *ANTI-SPAM ACTIVADO*
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *PROTECCIÓN ACTIVADA*
 │
-│ 👾 *Estado:* ENCENDIDO
-│ 🛡️ *Filtro:* Stickers + Emojis
-│ ⛈️ *Ricky vigila el flood*
-╰─────────────────❒`, m)
+│ 🎀 *Estado:* ENCENDIDO
+│ ⭐ *Filtro:* Stickers + Emojis
+│ 💫 *Dollie vigila el floodcito*
+╰─────────────────────────╯`, m)
   } else if (/off/i.test(args[0])) {
     bot.antiSpam = false
-    await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ❌ *ANTI-SPAM DESACTIVADO*
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *PROTECCIÓN DESACTIVADA*
 │
-│ 👾 *Estado:* APAGADO
-│ ✅ *Se permiten stickers y emojis*
-╰─────────────────❒`, m)
+│ 🎀 *Estado:* APAGADITO
+│ ⭐ *Se permiten stickers y emojis*
+╰─────────────────────────╯`, m)
   } else {
-    await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🌩️ *PANEL ANTI-SPAM*
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ⭐ *PANEL ANTI-SPAM*
 │
 │ 📌 *Uso:*.antispam on /.antispam off
-│ ⚡ *Función:* Anti flood de stickers/emojis
-│ 🛡️ *Límite:* 4 avisos | 6 expulsión
+│ ✨ *Función:* Anti flood de stickers/emojis
+│ 🎀 *Límite:* 4 avisitos | 6 expulsión
 │
-│ 👾 *Mantén el grupo limpio*
-╰─────────────────❒`, m)
+│ *Mantengamos el grupito bonitito* 💫
+╰─────────────────────────╯`, m)
   }
 }
 
@@ -68,12 +68,12 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwn
 
   if (isOwner || isROwner) {
     if (count === warnLimit) {
-      await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 👑 *AVISO AL OWNER*
+      await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 👑 *AVISITO PARA TI*
 │
-│ ⚡ *Bájale al spam creador*
-│ 🌀 *Estás saturando el chat*
-╰─────────────────❒`, m)
+│ ✨ *Bájale al spam creador*
+│ 💫 *Me estás llenando de estrellitas*
+╰─────────────────────────╯`, m)
     }
     return
   }
@@ -81,26 +81,26 @@ handler.before = async function (m, { conn, isAdmin, isBotAdmin, isOwner, isROwn
   if (m.isGroup && (isAdmin || isPrems ||!isBotAdmin)) return
 
   if (count === warnLimit) {
-    await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *¡ALERTA DE SPAM!*
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ⭐ *¡AY FLOODCITO!*
 │
-│ ⚡ *Usuario:* @${sender.split('@')[0]}
-│ 📊 *Progreso:* ${count}/${kickLimit}
-│ 👾 *Advertencia:* Baja al flood
+│ 💫 *Usuario:* @${sender.split('@')[0]}
+│ 🎀 *Progreso:* ${count}/${kickLimit}
+│ ✨ *Advertencia:* Bájale un poquito
 │
-│ > *Sigue así y Ricky actúa*
-╰─────────────────❒`, m, { mentions: [sender] })
+│ > *Si sigues Dollie se pone seria* 🎀
+╰─────────────────────────╯`, m, { mentions: [sender] })
   }
   else if (count >= kickLimit) {
-    await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⚡ *EXPULSIÓN EJECUTADA*
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *CHAU DEL GRUPO*
 │
-│ 🚮 *Usuario:* @${sender.split('@')[0]}
-│ 📌 *Causa:* Spam de stickers/emojis
-│ ⛈️ *Ricky no perdona*
+│ 🎀 *Usuario:* @${sender.split('@')[0]}
+│ ⭐ *Causa:* Mucho spam de stickers/emojis
+│ ✨ *Dollie tuvo que actuar*
 │
-│ > *Grupo protegido por Ricky Bot Prem*
-╰─────────────────❒`, m, { mentions: [sender] })
+│ > *Grupito protegido con mucho amor* 🎀
+╰─────────────────────────╯`, m, { mentions: [sender] })
     if (m.isGroup) {
       await conn.groupParticipantsUpdate(m.chat, [sender], 'remove')
     }
