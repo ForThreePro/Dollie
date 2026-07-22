@@ -1,43 +1,43 @@
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
     // Validación de permisos para el comando
-    if (!isAdmin &&!isOwner) throw `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🛡️ *ACCESO DENEGADO*
-│ Solo *ADMINS* pueden usar esto
-╰─────────────────❒`
+    if (!isAdmin &&!isOwner) throw `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *AY NO~*
+│ Solo las *ADMINS* pueden usar esto ⭐
+╰─────────────────────────╯`
 
     let chat = global.db.data.chats[m.chat]
     if (!chat) global.db.data.chats[m.chat] = {}
 
     if (/on/i.test(args[0])) {
         chat.modoadmin = true
-        await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⚡ *MODO ADMIN ACTIVADO*
+        await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *MODO ADMIN ACTIVADO*
 │
-│ 👾 *Estado:* ENCENDIDO
-│ 🛡️ *Restricción:* Solo Admins
-│ ⛈️ *Los comandos están bloqueados*
+│ 🎀 *Estado:* ENCENDIDO
+│ ⭐ *Restricción:* Solo Admins
+│ 💫 *Los comandos están protejiditos*
 │
-│ > *“Ricky controla el grupo”*
-╰─────────────────❒`, m)
+│ > *“Dollie cuida tu grupito”* 🎀
+╰─────────────────────────╯`, m)
     } else if (/off/i.test(args[0])) {
         chat.modoadmin = false
-        await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ❌ *MODO ADMIN DESACTIVADO*
+        await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *MODO ADMIN DESACTIVADO*
 │
-│ 👾 *Estado:* APAGADO
-│ ✅ *Todos pueden usar el bot*
-│ 🌩️ *Chat libre nuevamente*
-╰─────────────────❒`, m)
+│ 🎀 *Estado:* APAGADITO
+│ ⭐ *Todos pueden usar el bot*
+│ ✨ *Chat libre nuevamente*
+╰─────────────────────────╯`, m)
     } else {
-        await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🌩️ *PANEL MODO ADMIN*
+        await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ⭐ *PANEL MODO ADMIN*
 │
 │ 📌 *Uso:*.modoadmin on /.modoadmin off
-│ ⚡ *Función:* Restringe comandos a admins
-│ 🛡️ *Protege:* Uso indebido del bot
+│ ✨ *Función:* Restringe comandos a admins
+│ 🎀 *Protege:* Uso indebido del bot
 │
-│ 👾 *Control total del grupo*
-╰─────────────────❒`, m)
+│ *Control coqueto del grupo* 💫
+╰─────────────────────────╯`, m)
     }
 }
 
@@ -57,13 +57,13 @@ handler.before = async function (m, { conn, isAdmin, isOwner, isROwner, isPrems 
         if (chat.modoadmin &&!isAdmin &&!isOwner &&!isROwner &&!isPrems) {
             // Si el usuario intenta usar un comando (empieza con prefijo), bloqueamos
             if (m.text.startsWith('.') || m.text.startsWith('/') || m.text.startsWith('#')) {
-                await conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ACCESO BLOQUEADO*
+                await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *ACCESO BLOQUEADITO*
 │
-│ ⚡ *Modo Admin:* ACTIVO
-│ ❌ *No tienes permiso*
-│ 👾 *Solo admins pueden usar comandos*
-╰─────────────────❒`, m)
+│ ⭐ *Modo Admin:* ACTIVADO
+│ 🎀 *No tienes permisi~*
+│ ✨ *Solo admins pueden usar comandos*
+╰─────────────────────────╯`, m)
                 return false // Detiene la ejecución de otros plugins
             }
         }
