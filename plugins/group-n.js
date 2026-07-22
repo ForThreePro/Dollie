@@ -2,51 +2,51 @@ let mutedUsers = new Set();
 
 let handler = async (m, { conn, command, participants }) => {
     let mentionedJid = m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : false;
-    if (!mentionedJid) return m.reply(`╭─⚡ *『 𝐑𝐈𝐂𝐊𝐘 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓 』* ⚡
-│ 😎 *ERROR DE SISTEMA*
+    if (!mentionedJid) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *AY NO~*
 │
-│ 🎯 *USO:* Responde a un mensaje
+│ ✨ *USO:* Responde a un mensaje
 │
-│ > *“Protocolo de muteo requiere objetivo”* ⚡
-╰─────────────────❒`);
+│ > *“Necesito saber a quién mutear”* 🎀
+╰─────────────────────────╯`);
 
     let isUserAdmin = participants.find(p => p.id === mentionedJid)?.admin;
-    if (isUserAdmin) return m.reply(`╭─⚡ *『 𝐑𝐈𝐂𝐊𝐘 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓 』* ⚡
-│ 🛡️ *ACCESO DENEGADO*
+    if (isUserAdmin) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *ACCESO DENEGADO*
 │
-│ ⚠️ *No se puede mutear a un administrador*
+│ 💫 *No puedo mutear a un administrador*
 │
-│ > *“Rango superior detectado”* 😎
-╰─────────────────❒`);
+│ > *“Rango superior detectado”* 👑
+╰─────────────────────────╯`);
 
-    if (mentionedJid === conn.user.jid) return m.reply(`╭─⚡ *『 𝐑𝐈𝐂𝐊𝐘 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓 』* ⚡
-│ 🤖 *PROTOCOLO FALLIDO*
+    if (mentionedJid === conn.user.jid) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *AY NO~*
 │
-│ ⚠️ *No puedo realizar esta acción conmigo mismo*
+│ ✨ *No puedo mutearme a mi misma*
 │
-│ > *“Autoeliminacion no permitida”* ❌
-╰─────────────────❒`);
+│ > *“Auto-mute no permitido”* 🎀
+╰─────────────────────────╯`);
 
     if (command === "mute") {
         mutedUsers.add(mentionedJid);
-        conn.reply(m.chat, `╭─⚡ *『 𝐑𝐈𝐂𝐊𝐘 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓 』* ⚡
-│ 🔇 *USUARIO SILENCIADO*
+        conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 🔇 *USUARIO SILENCIADITO*
 │
 │ 👤 *Objetivo:* @${mentionedJid.split('@')[0]}
-│ 📊 *Estado:* MUTE ACTIVADO
+│ 📊 *Estado:* MUTE ACTIVADO ✨
 │
-│ > *“Se eliminaran sus mensajes”* ⚡
-╰─────────────────❒`, m, { mentions: [mentionedJid] });
+│ > *“Sus mensajes serán borrados”* 💫
+╰─────────────────────────╯`, m, { mentions: [mentionedJid] });
     } else if (command === "unmute") {
         mutedUsers.delete(mentionedJid);
-        conn.reply(m.chat, `╭─⚡ *『 𝐑𝐈𝐂𝐊𝐘 𝐏𝐑𝐄𝐌 𝐁𝐎𝐓 』* ⚡
-│ 🔊 *USUARIO LIBERADO*
+        conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 🔊 *USUARIO LIBERADITO*
 │
 │ 👤 *Objetivo:* @${mentionedJid.split('@')[0]}
-│ 📊 *Estado:* MUTE DESACTIVADO
+│ 📊 *Estado:* MUTE DESACTIVADO ✨
 │
-│ > *“Puede volver a escribir”* 😎
-╰─────────────────❒`, m, { mentions: [mentionedJid] });
+│ > *“Ya puede volver a escribir”* 🎀
+╰─────────────────────────╯`, m, { mentions: [mentionedJid] });
     }
 };
 
@@ -61,7 +61,7 @@ handler.before = async (m, { conn, isAdmin }) => {
     }
 };
 
-handler.help = ['mute', 'unmute'].map(v => v + ' Reacciona Al Mensaje');
+handler.help = ['mute', 'unmute'].map(v => v + ' Responde al mensaje')
 handler.tags = ['grupos'];
 handler.command = /^(mute|unmute)$/i;
 handler.group = true;
