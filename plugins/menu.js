@@ -3,7 +3,7 @@ import { readFileSync } from 'fs'
 
 let handler = async (m, { conn, usedPrefix }) => {
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
-  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg')) // cambia la imagen a ricky.jpg
+  const img = readFileSync(join(process.cwd(), 'storage', 'img', 'rayo.jpg')) // mantenemos rayo.jpg 💝
 
   let totalUsers = Object.keys(global.db.data.users).length
   let totalCmds = Object.values(global.plugins).filter(p => p.help &&!p.disabled).length
@@ -22,23 +22,21 @@ let handler = async (m, { conn, usedPrefix }) => {
   let m2 = Math.floor(uptime / 60000) % 60
   let s = Math.floor(uptime / 1000) % 60
 
-  let menuText = `👾━━━━━━━━👾
-     👾 *𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠* 👾
-👾━━━━━━━━👾
-
-👾 *Usuario:* @${taguser.split('@')[0]}
-⚡ *Prefijo:* [ ${usedPrefix} ]
-⏰ *Activo:* ${h}h ${m2}m ${s}s
-
-👾━━ *ESTADISTICAS* ━━👾
-📊 *Comandos:* ${totalCmds}
-👥 *Usuarios:* ${totalUsers}
-
-👾━━ *FECHA Y HORA* ━━👾
-📅 *Día:* ${dia}
-📆 *Fecha:* ${fechaCompleta}
-🕐 *Hora:* ${hora}
-
+  let menuText = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *HOLA* @${taguser.split('@')[0]} 💫
+│
+│ 🎀 *Prefijo:* [ ${usedPrefix} ]
+│ ⏰ *Activo:* ${h}h ${m2}m ${s}s
+│
+├─❒ *ESTADÍSTICAS* ❒
+│ 📊 *Comandos:* ${totalCmds}
+│ 👥 *Usuarios:* ${totalUsers}
+│
+├─❒ *FECHA Y HORA* ❒
+│ 📅 *Día:* ${dia}
+│ 📆 *Fecha:* ${fechaCompleta}
+│ 🕐 *Hora:* ${hora}
+│
 `
 
   let help = Object.values(global.plugins).filter(p => p.help &&!p.disabled)
@@ -53,26 +51,27 @@ let handler = async (m, { conn, usedPrefix }) => {
 
   let emojis = {
     'downloader': '📥', 'search': '🔍', 'config': '⚙️', 'group': '👥',
-    'info': 'ℹ️', 'fun': '🎭', 'sticker': '👾', 'owner': '👑',
-    'anime': '🌸', 'rg': '💎', 'game': '🎮', 'general': '✨'
+    'info': '✨', 'fun': '🎭', 'sticker': '🎀', 'owner': '👑',
+    'anime': '🌸', 'rg': '💎', 'game': '🎮', 'general': '💫'
   }
 
   for (let category in groups) {
-    let emoji = emojis[category] || '👾'
-    menuText += `👾━━ ${emoji} *${category.toUpperCase()}* ━━👾\n`
+    let emoji = emojis[category] || '🎀'
+    menuText += `├─❒ ${emoji} *${category.toUpperCase()}* ❒\n`
     for (let cmd of groups[category]) {
-      menuText += `⚡ ${usedPrefix}${cmd}\n`
+      menuText += `│ ✨ ${usedPrefix}${cmd}\n`
     }
-    menuText += `\n`
+    menuText += `│\n`
   }
 
-  menuText += `👾━━━━━━━━
-👾 *BOT:* Ricky Bot Prem
-⚡ *Creador:* Whois Yallico 👑
-👾 *Versión:* 3.0.0 Prem Edition
-
-> *"Ricky Bot Prem al servicio del chat"* 👾
-👾━━━━━━━━`
+  menuText += `╰─────────────────────────╯
+│
+│ 🎀 *BOT:* Dollie Bot
+│ 💫 *Creador:* Dollie Team 👑
+│ ✨ *Versión:* 3.0.0 Premium Edition
+│
+│ > *“Dollie Bot al servicio del chat”* 💝
+╰─────────────────────────╯`
 
   await conn.sendMessage(m.chat, {
     image: img,
