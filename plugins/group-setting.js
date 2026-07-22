@@ -5,16 +5,16 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     }[(args[0] || '')]
 
     if (isClose === undefined) {
-        await conn.reply(m.chat, `👾 *RICKY BOT PREM GRUPO*\n\n⚡ *Elija una opción:*\n*${usedPrefix + command}* abrir\n*${usedPrefix + command}* cerrar`, m)
+        await conn.reply(m.chat, `🎀 *DOLLIE BOT GRUPO* 💫\n\n✨ *Elije una opcioncita:*\n*${usedPrefix + command}* abrir\n*${usedPrefix + command}* cerrar`, m)
         return
     }
 
     await conn.groupSettingUpdate(m.chat, isClose)
 
     // Aviso de la acción realizada
-    let estado = isClose === 'announcement'? 'cerrado 🔒' : 'abierto 🔓'
+    let estado = isClose === 'announcement'? 'cerradito 🔒' : 'abiertito 🔓'
     let emoji = isClose === 'announcement'? '🔒' : '🔓'
-    await conn.reply(m.chat, `${emoji} *RICKY BOT PREM* ➔ Grupo ${estado}\n👾 *Acción por:* @${m.sender.split('@')[0]}\n⚡ *Ricky Bot Prem*`, m, {
+    await conn.reply(m.chat, `${emoji} *DOLLIE BOT* ➔ Grupo ${estado}\n🎀 *Acción por:* @${m.sender.split('@')[0]}\n✨ *Dollie bot*`, m, {
         mentions: [m.sender]
     })
 }
