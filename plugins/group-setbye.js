@@ -1,11 +1,11 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ACCESO DENEGADO*
+        return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *ACCESO DENEGADO*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 👾 *pueden controlar el bot*
-╰─────────────────❒`);
+│ ✨ *Solo los admins o el dueño*
+│ 🎀 *pueden controlar el bot*
+╰─────────────────────────╯`);
     }
 
     let chat = global.db.data.chats[m.chat]
@@ -13,36 +13,36 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setbye') {
-        if (!text) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🌩️ *CONFIGURAR DESPEDIDA*
+        if (!text) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *CONFIGURAR DESPEDIDA*
 │
-│ ⚡ *Falta el mensaje*
+│ ✨ *Falta el mensajito*
 │
 │ 💡 *Ejemplo:*
 │ .setbye 💨 @user salió del grupo
-╰─────────────────❒`);
+╰─────────────────────────╯`);
         chat.customBye = text.trim();
-        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ✅ *DESPEDIDA GUARDADA*
+        return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *DESPEDIDA GUARDADA*
 │
 │ 📝 *Vista previa:*
 │ \`\`${text.trim()}\`\`
 │
 │ 🗑️ *Para borrar:* .delbye
-╰─────────────────❒`);
+╰─────────────────────────╯`);
     }
     if (command === 'delbye') {
-        if (!chat.customBye) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⚠️ *SIN DESPEDIDA*
+        if (!chat.customBye) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *SIN DESPEDIDA*
 │
-│ 👾 *No tienes una despedida editada*
-╰─────────────────❒`);
+│ ✨ *No tienes una despedida editada*
+╰─────────────────────────╯`);
         delete chat.customBye;
-        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ✅ *DESPEDIDA ELIMINADA*
+        return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *DESPEDIDA ELIMINADA*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
-╰─────────────────❒`);
+│ 🗑️ *Se borró el mensajito personalizado*
+╰─────────────────────────╯`);
     }
 };
 handler.help = ['setbye <Mensaje>', 'delbye'];
