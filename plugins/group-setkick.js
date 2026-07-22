@@ -1,11 +1,11 @@
 const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     if (!m.isGroup || (!isAdmin &&!isOwner)) {
-        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ACCESO DENEGADO*
+        return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *ACCESO DENEGADO*
 │
-│ ⚡ *Solo los admins o el dueño*
-│ 👾 *pueden dictar sentencia*
-╰─────────────────❒`);
+│ ✨ *Solo los admins o el dueño*
+│ 🎀 *pueden dictar sentencia*
+╰─────────────────────────╯`);
     }
 
     let chat = global.db.data.chats[m.chat]
@@ -13,36 +13,36 @@ const handler = async (m, { conn, text, command, isAdmin, isOwner }) => {
     chat = global.db.data.chats[m.chat]
 
     if (command === 'setkick') {
-        if (!text) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🚫 *CONFIGURAR KICK*
+        if (!text) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *CONFIGURAR KICK*
 │
-│ ⚡ *Falta el mensaje*
+│ ✨ *Falta el mensajito*
 │
 │ 💡 *Ejemplo:*
-│ .setkick 🚫 @user fue expulsado del grupo
-╰─────────────────❒`);
+│ .setkick 🚫 @user fue expulsadito del grupo
+╰─────────────────────────╯`);
         chat.customKick = text.trim();
-        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ✅ *KICK GUARDADO*
+        return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *KICK GUARDADO*
 │
 │ 📝 *Vista previa:*
 │ \`\`${text.trim()}\`\`
 │
 │ 🗑️ *Para borrar:* .delkick
-╰─────────────────❒`);
+╰─────────────────────────╯`);
     }
     if (command === 'delkick') {
-        if (!chat.customKick) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⚠️ *SIN KICK*
+        if (!chat.customKick) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *SIN KICK*
 │
-│ 👾 *No tienes un kick personalizado*
-╰─────────────────❒`);
+│ ✨ *No tienes un kick personalizado*
+╰─────────────────────────╯`);
         delete chat.customKick;
-        return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ✅ *KICK ELIMINADO*
+        return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *KICK ELIMINADO*
 │
-│ 🗑️ *Se borró el mensaje personalizado*
-╰─────────────────❒`);
+│ 🗑️ *Se borró el mensajito personalizado*
+╰─────────────────────────╯`);
     }
 };
 handler.help = ['setkick <mensaje>', 'delkick'];
