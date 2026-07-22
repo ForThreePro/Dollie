@@ -9,18 +9,18 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
   let type = args[0]?.toLowerCase()
 
   if (!type) {
-    let w = chat.welcome? '⚡ ON' : '❌ OFF'
-    let b = chat.bye? '⚡ ON' : '❌ OFF'
-    let k = chat.kick? '⚡ ON' : '❌ OFF'
-    let d = chat.detect? '⚡ ON' : '❌ OFF'
-    return conn.reply(m.chat, `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+    let w = chat.welcome? '✨ ON' : '💫 OFF'
+    let b = chat.bye? '✨ ON' : '💫 OFF'
+    let k = chat.kick? '✨ ON' : '💫 OFF'
+    let d = chat.detect? '✨ ON' : '💫 OFF'
+    return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │
-│ 🥥 *Panel de Control del Sistema*
+│ ✨ *Panel de Control*
 │
-│ 1. Bienvenidas : ${w}
-│ 2. Despedidas : ${b}
-│ 3. Expulsiones : ${k}
-│ 4. Detect : ${d}
+│ 🎀 1. Bienvenidas : ${w}
+│ 🎀 2. Despedidas : ${b}
+│ 🎀 3. Expulsiones : ${k}
+│ 🎀 4. Detect : ${d}
 │
 │ *Comandos Disponibles*
 │.on welcome /.off welcome
@@ -28,8 +28,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 │.on kick /.off kick
 │.on detect /.off detect
 │
-│ > *Ricki Prem Dice: Usa los comandos para activar*
-╰─────────────────❒`, m)
+│ > *Dollie dice: Activa lo que quieras* 💫
+╰─────────────────────────╯`, m)
   }
 
   let isEnable = accion === 'on'
@@ -88,24 +88,24 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       bot.antiPrivate = isEnable
       break
     default:
-      return m.reply(`⚡ Tipo inválido. Usa: welcome, bye, kick, detect`)
+      return m.reply(`💫 Tipo inválido. Usa: welcome, bye, kick, detect`)
   }
 
   if (fail) return
 
   const pathImg = join(process.cwd(), 'storage', 'img', 'antitop.jpg')
-  let rickiImg = existsSync(pathImg)? readFileSync(pathImg) : null
+  let dollieImg = existsSync(pathImg)? readFileSync(pathImg) : null
 
-  let estadoTexto = isEnable? 'activado ⚡' : 'desactivado ❌'
-  let emoji = isEnable? '⚡' : '❌'
+  let estadoTexto = isEnable? 'activadito ✨' : 'desactivadito 💫'
+  let emoji = isEnable? '✨' : '💫'
 
-  let statusTxt = `${emoji} *Ricki Prem Dice: config* ⚡\n\n`
-  statusTxt += `🥥 *funcion:* ${type}\n`
+  let statusTxt = `${emoji} *Dollie dice: config* 🎀\n\n`
+  statusTxt += `🎀 *funcion:* ${type}\n`
   statusTxt += `📊 *estado:* ${estadoTexto}\n\n`
-  statusTxt += `⚡ *Ricki Prem Bot System*`
+  statusTxt += `✨ *Dollie bot System*`
 
-  if (rickiImg) {
-    await conn.sendMessage(m.chat, { image: rickiImg, caption: statusTxt, mentions: [m.sender] }, { quoted: m })
+  if (dollieImg) {
+    await conn.sendMessage(m.chat, { image: dollieImg, caption: statusTxt, mentions: [m.sender] }, { quoted: m })
   } else {
     await conn.sendMessage(m.chat, { text: statusTxt, mentions: [m.sender] }, { quoted: m })
   }
