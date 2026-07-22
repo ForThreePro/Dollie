@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🔍 *GOOGLE SEARCH*
+    if (!text) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *GOOGLE SEARCH*
 │
-│ 👾 *¿Qué deseas buscar?*
-│ ⚡ *Uso:*.google Ricky Bot Prem
-╰─────────────────❒`)
+│ 🎀 *¿Qué buscas lindito?*
+│ ⭐ *Uso:*.google Dollie bot
+╰─────────────────────────╯`)
 
     await m.react('🔍')
 
@@ -14,27 +14,27 @@ let handler = async (m, { conn, text }) => {
         let { data } = await axios.get(`https://api.delirius.store/search/google?query=${encodeURIComponent(text)}`)
         let results = data.data.slice(0, 5)
 
-        if (!results.length) return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ❌ *SIN RESULTADOS*
+        if (!results.length) return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *AY NO~*
 │
-│ ⚡ *No se encontró nada sobre:* ${text}
-╰─────────────────❒`)
+│ ⭐ *No encontré nada sobre:* ${text}
+╰─────────────────────────╯`)
 
-        let txt = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 🔍 *RESULTADOS DE BÚSQUEDA*
+        let txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *RESULTADOS DE BÚSQUEDA*
 │
-│ 👾 *Consulta:* ${text}
-╰─────────────────❒\n\n`
+│ 🎀 *Consulta:* ${text}
+╰─────────────────────────╯\n\n`
 
         txt += results.map((v, i) => {
-            return `╭─── ⚡ *RESULTADO ${i + 1}* ───╮
+            return `╭─── ⭐ *RESULTADO ${i + 1}* ───╮
 │ 📌 *${v.title}*
 │ 📝 ${v.description}
 │ 🔗 ${v.url}
 ╰───────────────────╯`
         }).join('\n\n')
 
-        txt += `\n\n> *“Busqueda potenciada por IA”* ⚡\n> *© Ricky Bot Prem*`
+        txt += `\n\n> *“Búsqueda potenciada con magia IA”* ✨\n> *© Dollie bot* 🎀`
 
         await conn.reply(m.chat, txt, m)
         await m.react('✅')
@@ -42,12 +42,12 @@ let handler = async (m, { conn, text }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ERROR*
+        m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *UPS~*
 │
-│ ⚡ *Falló la búsqueda*
-│ 👾 *Intenta de nuevo*
-╰─────────────────❒`)
+│ ⭐ *Falló la búsqueda*
+│ 🎀 *Intenta de nuevo en un ratito*
+╰─────────────────────────╯`)
     }
 }
 
