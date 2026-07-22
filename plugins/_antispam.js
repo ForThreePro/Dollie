@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, isOwner }) => {
 
   if (/on/i.test(args[0])) {
     bot.antiSpam = true
-    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │ ✨ *PROTECCIÓN ACTIVADA*
 │
 │ 🎀 *Estado:* ENCENDIDO
@@ -15,14 +15,14 @@ let handler = async (m, { conn, args, isOwner }) => {
 ╰─────────────────────────╯`, m)
   } else if (/off/i.test(args[0])) {
     bot.antiSpam = false
-    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │ 💫 *PROTECCIÓN DESACTIVADA*
 │
 │ 🎀 *Estado:* APAGADITO
 │ ⭐ *Se permiten stickers y emojis*
 ╰─────────────────────────╯`, m)
   } else {
-    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+    await conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │ ⭐ *PANEL ANTI-SPAM*
 │
 │ 📌 *Uso:*.antispam on /.antispam off
