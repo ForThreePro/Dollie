@@ -42,55 +42,55 @@ handler.before = async function (m, { conn }) {
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
         if (chat.welcome == false) return
         audio = 'bienvenida.mp3'
-        txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+        txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │
-│ 🥥 *Nuevo Miembro Conectado*
+│ ✨ *¡Nuevo miembrito llegó!*
 │
-│ 👤 *Usuario:* ${user}
-│ 🪩 *Grupo:* ${metadata.subject}
-│ 📊 *Total:* ${metadata.participants.length} miembros
+│ 🎀 *Usuario:* ${user}
+│ 💫 *Grupo:* ${metadata.subject}
+│ ⭐ *Total:* ${metadata.participants.length} miembritos
 │
-│ "Bienvenido a la familia ⚡
-│ Pasa y ponte cómodo 🥥"
+│ "Bienvenido a la familia 🎀
+│ Ponte cómodo y disfruta 💫"
 │
-│ > *Ricki Prem Dice: Nuevo nodo agregado*
-╰─────────────────❒`
+│ > *Dollie dice: Nuevo angelito en el grupo*
+╰─────────────────────────╯`
     }
 
     // BYE
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE) {
         if (chat.bye == false) return
         audio = 'despedida.mp3'
-        txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+        txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │
-│ 🪩 *Desconexión Registrada*
+│ 💫 *Se fue un miembrito*
 │
-│ 👤 *Usuario:* ${user}
-│ 🥥 *Grupo:* ${metadata.subject}
-│ 📊 *Quedan:* ${metadata.participants.length} miembros
+│ 🎀 *Usuario:* ${user}
+│ ✨ *Grupo:* ${metadata.subject}
+│ ⭐ *Quedamos:* ${metadata.participants.length} miembritos
 │
-│ "Nos vemos pronto ⚡"
+│ "Nos vemos prontito 💫"
 │
-│ > *Ricki Prem Dice: Nodo desconectado*
-╰─────────────────❒`
+│ > *Dollie dice: Te vamos a extrañar* 🎀
+╰─────────────────────────╯`
     }
 
     // KICK
     if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE) {
         if (chat.kick == false) return
         audio = 'kick.mp3'
-        txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
+        txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │
-│ 🐆 *Expulsión Ejecutada*
+│ ⭐ *Chau del grupo*
 │
-│ 👤 *Usuario:* ${user}
-│ ⚠️ *Motivo:* Violación de protocolos
-│ 🪩 *Grupo:* ${metadata.subject}
+│ 🎀 *Usuario:* ${user}
+│ 💫 *Motivo:* Rompió las reglas
+│ ✨ *Grupo:* ${metadata.subject}
 │
-│ "Aquí se respetan las reglas ⚡"
+│ "Aquí cuidamos el grupito 🎀"
 │
-│ > *Ricki Prem Dice: Protocolo de seguridad aplicado*
-╰─────────────────❒`
+│ > *Dollie dice: Protocolo de seguridad aplicado*
+╰─────────────────────────╯`
     }
 
     if (!txt) return
