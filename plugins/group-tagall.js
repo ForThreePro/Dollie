@@ -5,7 +5,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       return;
     }
 
-    const customMessage = args.join(' ') || '👾 Invocación General';
+    const customMessage = args.join(' ') || '🎀 Invocación General ✨';
     const groupMetadata = await conn.groupMetadata(m.chat).catch(() => ({ subject: 'Grupo', participants: [] }));
     const groupName = groupMetadata.subject;
 
@@ -27,7 +27,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
       { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
       { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
-      { prefijo: '95', bandera: '🇲🇲' }
+      { prefijo: '95', bandera: '🇲' }
     ];
 
     const getCountryFlag = (mem) => {
@@ -52,13 +52,13 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩']);
 
-    // Texto con estética Ricky Bot Prem
-    let messageText = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ 📢 *INVOCACIÓN GENERAL*
+    // Texto con estética Dollie Bot
+    let messageText = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *INVOCACIÓN GENERAL*
 │
 │ 🌐 *Grupo:* ${groupName}
-│ ⚡ *Integrantes:* ${participants.length}
-│ 👾 *Mensaje:* ${customMessage}
+│ 💫 *Integrantes:* ${participants.length}
+│ 🎀 *Mensaje:* ${customMessage}
 │
 ├─❒ *INTEGRANTES POR PAÍS* ❒
 `;
@@ -73,12 +73,12 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       }
     }
 
-    messageText += `╰─────────────────❒
+    messageText += `╰─────────────────────────╯
 │
-│ > *“Ricky Bot Prem al servicio del grupo”*
-╰─────────────────❒`;
+│ > *“Dollie Bot al servicio del grupo”* 💫
+╰─────────────────────────╯`;
 
-    // NUEVO: Detectar foto del grupo
+    // Foto del grupo
     let img
     try {
       img = await conn.profilePictureUrl(m.chat, 'image') // Foto del grupo
@@ -93,12 +93,12 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.error("[ERROR EN RICKY BOT]:", error);
-    conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ERROR*
+    console.error("[ERROR EN DOLLIE BOT]:", error);
+    conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *UPS~*
 │
-│ ⚡ *Ocurrió un error al ejecutar el comando*
-╰─────────────────❒`, m);
+│ ✨ *Ocurrió un problemita al ejecutar*
+╰─────────────────────────╯`, m);
   }
 };
 
