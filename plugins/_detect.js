@@ -17,83 +17,83 @@ handler.before = async function (m, { conn, groupMetadata }) {
 
     switch (m.messageStubType) {
         case 21: // Cambiar nombre
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 🥥 *Ricki Prem Dice: registro del sistema*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie registra~*
 │
-│ 📢 *cambio de nombre*
-│ 👤 *usuario:* ${usuario}
-│ 📝 *nuevo:* _${m.messageStubParameters[0]}_
-│ 💻 *grupo:* ${group}
+│ ⭐ *Cambio de nombrecito*
+│ 🎀 *Usuario:* ${usuario}
+│ 💫 *Nuevo:* _${m.messageStubParameters[0]}_
+│ 💝 *Grupo:* ${group}
 │
-│ > *🪩 Ricki Prem Dice: sistema renombrado correctamente*
-╰─────────────────❒`; break
+│ > *Todo quedó lindito y actualizado* 🎀
+╰─────────────────────────╯`; break
 
         case 22: // Cambiar foto
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 🐆 *Ricki Prem Dice: registro del sistema*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie registra~*
 │
-│ 📸 *cambio de foto*
-│ 👤 *usuario:* ${usuario}
-│ 🖼️ *nueva imagen establecida*
-│ 💻 *grupo:* ${group}
+│ ⭐ *Nueva fotito del grupo*
+│ 🎀 *Usuario:* ${usuario}
+│ 💫 *Imagen actualizada*
+│ 💝 *Grupo:* ${group}
 │
-│ > *💿 Ricki Prem Dice: imagen actualizada en el sistema*
-╰─────────────────❒`; break
+│ > *Se ve hermosita ahora* 🎀
+╰─────────────────────────╯`; break
 
         case 23: // Cambiar link
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 🪩 *Ricki Prem Dice: alerta de seguridad*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie alerta~*
 │
-│ 🔗 *link reseteado*
-│ 👤 *usuario:* ${usuario}
-│ 💻 *grupo:* ${group}
+│ ⭐ *Link reseteado*
+│ 🎀 *Usuario:* ${usuario}
+│ 💫 *Grupo:* ${group}
 │
-│ > *🥥 Ricki Prem Dice: protocolo de enlace modificado*
-╰─────────────────❒`; break
+│ > *El linkito ya es nuevito* 🎀
+╰─────────────────────────╯`; break
 
         case 25: // Cambiar ajustes
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 💿 *Ricki Prem Dice: ajustes modificados*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie ajusta~*
 │
-│ 👤 *usuario:* ${usuario}
-│ ⚙️ *permisos:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
-│ 📊 *edicion de info de grupo*
+│ 🎀 *Usuario:* ${usuario}
+│ ⭐ *Permisos:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
+│ 💫 *Edición de info del grupo*
 │
-│ > *🐆 Ricki Prem Dice: permisos del sistema actualizados*
-╰─────────────────❒`; break
+│ > *Permisitos actualizados* 🎀
+╰─────────────────────────╯`; break
 
         case 26: // Abrir/Cerrar
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 🥥 *Ricki Prem Dice: estado del sistema*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie informa~*
 │
-│ 👤 *usuario:* ${usuario}
-│ 🗣️ *modo:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
-│ 📢 *grupo:* ${m.messageStubParameters[0] == 'on'? 'cerrado' : 'abierto'}
+│ 🎀 *Usuario:* ${usuario}
+│ ⭐ *Modo:* ${m.messageStubParameters[0] == 'on'? '*solo admins* 🔒' : '*todos* 🔓'}
+│ 💫 *Grupo:* ${m.messageStubParameters[0] == 'on'? 'cerradito' : 'abiertito'}
 │
-│ > *🪩 Ricki Prem Dice: modo de comunicacion actualizado*
-╰─────────────────❒`; break
+│ > *Modo de chat actualizado* 🎀
+╰─────────────────────────╯`; break
 
         case 29: // Dar admin
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 🐆 *Ricki Prem Dice: ascenso de rango*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie asciende~*
 │
-│ ⚡ *nuevo admin:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *otorgado por:* ${usuario}
-│ 💻 *rango:* administrador
+│ ⭐ *Nuevo admin:* @${m.messageStubParameters[0].split('@')[0]}
+│ 🎀 *Otorgado por:* ${usuario}
+│ 💫 *Rango:* Administrador
 │
-│ > *💿 Ricki Prem Dice: acceso de administrador concedido*
-╰─────────────────❒`; break
+│ > *Bienvenido al staff coqueto* 🎀
+╰─────────────────────────╯`; break
 
         case 30: // Quitar admin
-            txt = `╭─❒ *『 Ricki Prem Bot 』* ⚡❒
-│ 🪩 *Ricki Prem Dice: rango revocado*
+            txt = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *Dollie remueve~*
 │
-│ 💥 *admin removido:* @${m.messageStubParameters[0].split('@')[0]}
-│ 👤 *ejecutado por:* ${usuario}
-│ 🗑️ *permisos eliminados*
+│ ⭐ *Admin removido:* @${m.messageStubParameters[0].split('@')[0]}
+│ 🎀 *Ejecutado por:* ${usuario}
+│ 💫 *Permisos eliminados*
 │
-│ > *🥥 Ricki Prem Dice: acceso de administrador revocado*
-╰─────────────────❒`; break
+│ > *Rango revocado con amor* 🎀
+╰─────────────────────────╯`; break
     }
 
     if (txt) {
