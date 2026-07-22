@@ -7,31 +7,31 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 
 global.owner = [
-  [ '51936994155', 'Barboza OFC 🌃', true ],
-  [ '15812903813', 'Jota 🐼', true ]
+  [ '528621029907', 'Dollie Creadora 👑', true ],
+  [ '51927174369', 'Co-Creador 💫', true ]
 ]
 
 global.mods = []
 global.prems = []
 
-global.packname = `[ 𝙉𝙤𝙭 𝘽ο𝙩 🌃`
-global.author = '𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃]'
-global.stickpack = '© 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃'
-global.stickauth = '𝘽𝙮 𝙉𝙤𝙭 𝘽ο𝙩'
-global.wm = '𝙉𝙤𝙭 🌃'
-global.botname = '[ 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃 ]'
-global.textbot = `𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝙉𝙤𝙭 🌀`
-global.dev = '• 𝙋ο𝙬𝙚𝙧𝙚𝙙 𝙗𝙮 𝘾ο𝙢𝙢𝙪𝙣𝙞𝙩𝙮 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃'
-global.wait = '🌪️ *𝘼𝙜𝙪𝙖𝙧𝙙𝙚 𝙪𝙣 𝙢ο𝙢𝙚𝙣𝙩ο, 𝙨ο𝙮 𝙡𝙚𝙣𝙩ο... ฅ^•ﻌ•^ฅ\n\n> 𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃 🌪️*'
-global.listo = '*𝘼𝙦𝙪𝙞 𝙩𝙞𝙚𝙣𝙚 ฅ^•ﻌ•^ฅ*'
-global.namechannel = '𝙉𝙤𝙭 𝘽ο𝙩 𝙈𝘿 🌃'
+global.packname = `𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 🎀`
+global.author = '𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 ✨'
+global.stickpack = '© 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 🎀'
+global.stickauth = '𝗕𝘆 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧'
+global.wm = '𝗗𝗢𝗟𝗜𝗘 🎀'
+global.botname = '[ 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 🎀 ]'
+global.textbot = `𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗗𝗼𝗹𝗹𝗶𝗲 ✨`
+global.dev = '• 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗗𝗼𝗹𝗹𝗶𝗲 𝗧𝗲𝗮𝗺 🎀'
+global.wait = '⏳ *𝗔𝗴𝘂𝗮𝗿𝗱𝗮 𝘂𝗻 𝗺𝗼𝗺𝗲𝗻𝘁𝗶𝘁𝗼, 𝗲𝘀𝘁𝗼𝘆 𝗽𝗿𝗼𝗰𝗲𝘀𝗮𝗻𝗱𝗼... ฅ^•ﻌ•^ฅ*\n\n> 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 🎀 ✨'
+global.listo = '*𝗔𝗾𝘂𝗶 𝘁𝗶𝗲𝗻𝗲𝘀 ฅ^•ﻌ•^ฅ*'
+global.namechannel = '𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 🎀'
 global.channel = 'https://whatsapp.com/channel/0029Vaua0ZD3gvWjQaIpSy18'
 
-global.rayo = fs.readFileSync('./storage/img/rayo.jpg')
+global.rayo = fs.readFileSync('./storage/img/rayo.jpg') // seguimos con rayo.jpg 💝
 
 global.group = 'https://chat.whatsapp.com/CBuLXuVZcg9FEfCSHiY6b0'
 global.canal = 'https://whatsapp.com/channel/0029Vaua0ZD3gvWjQaIpSy18'
-global.insta = 'https://www.insta.com/sebastian_barboza13'
+global.insta = 'https://www.insta.com/dolliebot'
 
 global.estilo = { 
   key: { 
@@ -41,11 +41,11 @@ global.estilo = {
   }, 
   message: { 
     orderMessage: { 
-      itemCount: -999999, 
+      itemCount: -999, 
       status: 1, 
       surface: 1, 
       message: global.packname, 
-      orderTitle: 'Bang', 
+      orderTitle: 'Dollie', 
       thumbnail: global.catalogo, 
       sellerJid: '0@s.whatsapp.net'
     }
