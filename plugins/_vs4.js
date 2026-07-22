@@ -6,55 +6,55 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
         const groupAdmins = participants.filter(p => p.admin)
         const owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
 
-        let text = `👾✧･ﾟ: *🌌 𝙶𝙳𝙲 - 𝚁𝙸𝙲𝙺𝚈 𝙱𝙾𝚃 𝙿𝚁𝙴𝙼 🌌* :ﾟ･✧👾
+        let text = `🎀✧･ﾟ: *💫 𝙶𝙳𝙲 - 𝙳𝙾𝙻𝙻𝙸𝙴 𝙱𝙾𝚃 💫* :ﾟ･✧🎀
 
-👑 𝗖𝗟𝗔𝗡: ${groupMetadata.subject}
+👑 𝗖𝗟𝗔𝗡𝗖𝗜𝗧𝗢: ${groupMetadata.subject}
 ⏰ 𝗛𝗢𝗥𝗔𝗥𝗜𝗢: __:__ 🇦🇷 / __:__ 🇵🇪
 
 ╭──────────────╮
-│ㅤ💫 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 ➹𝟏
+│ㅤ✨ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗜𝗧𝗔 ➹𝟏
 │
 │👑 ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
 │
-│💫 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 ➹𝟐
-│
-│👑 ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│
-│💫 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 ➹𝟑
+│✨ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗜𝗧𝗔 ➹𝟐
 │
 │👑 ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
 │
-│💫 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 ➹𝟒
-│
-│👑 ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│
-│💫 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 ➹𝟓
+│✨ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗜𝗧𝗔 ➹𝟑
 │
 │👑 ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
 │
-│💫 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 ➹𝟔
+│✨ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗜𝗧𝗔 ➹𝟒
 │
 │👑 ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
-│⚜️ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
 │
-│ㅤ👾 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦:
+│✨ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗜𝗧𝗔 ➹𝟓
+│
+│👑 ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│
+│✨ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗜𝗧𝗔 ➹𝟔
+│
+│👑 ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│⭐ ➤ ・
+│
+│ㅤ🎀 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗜𝗧𝗢𝗦:
 │💜 ➤ ・
 │💜 ➤ ・
 │💜 ➤ ・
@@ -63,7 +63,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
 │💜 ➤ ・
 ╰─────────────╯
 
-👾✧･ﾟ: *Llenen y copien* :ﾟ･✧👾`.trim()
+🎀✧･ﾟ: *Llenen y copien lindos* :ﾟ･✧🎀`.trim()
 
         return await conn.sendFile(m.chat, pp, 'gdc.jpg', text, m, false, { mentions: [...groupAdmins.map(v => v.id), owner] })
     }
@@ -74,7 +74,7 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
 
     let listaTitulares = ''
     for(let i = 1; i <= titulares; i++) {
-        listaTitulares += `🌟 ${i}. ・\n`
+        listaTitulares += `⭐ ${i}. ・\n`
     }
 
     let listaSuplentes = ''
@@ -82,25 +82,25 @@ let handler = async (m, { conn, participants, groupMetadata, command }) => {
         listaSuplentes += `💜 ${i}. ・\n`
     }
 
-    let plantilla = `👾✧･ﾟ: *🌌 𝚁𝙸𝙲𝙺𝚈 𝙱𝙾𝚃 𝙿𝚁𝙴𝙼 🌌* :ﾟ･✧👾
+    let plantilla = `🎀✧･ﾟ: *💫 𝙳𝙾𝙻𝙻𝙸𝙴 𝙱𝙾𝚃 💫* :ﾟ･✧🎀
 
-👑 𝗘𝗡𝗖𝗔𝗥𝗚𝗔𝗗𝗔: ・
-⏰ 𝗛𝗢𝗥𝗔: __:__ 🇦🇷 / __:__ 🇵🇪
+👑 𝗘𝗡𝗖𝗔𝗥𝗚𝗔𝗗𝗜𝗧𝗔: ・
+⏰ 𝗛𝗢𝗥𝗜𝗧𝗔: __:__ 🇦🇷 / __:__ 🇵🇪
 
 ───────────────
     ✨ 𝗧𝗜𝗧𝗨𝗟𝗔𝗥𝗘𝗦 ✨
 ───────────────
 ${listaTitulares}
 ───────────────
-   💫 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦 💫
+   💫 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗜𝗧𝗢𝗦 💫
 ───────────────
 ${listaSuplentes}
 ───────────────
-   🎁 𝗗𝗢𝗡𝗔𝗗𝗢𝗥𝗔 𝗗𝗘 𝗦𝗔𝗟𝗔 🎁
+   🎁 𝗗𝗢𝗡𝗔𝗗𝗢𝗥𝗜𝗧𝗔 𝗗𝗘 𝗦𝗔𝗟𝗔 🎁
 ───────────────
 💎 ・
 
-👾✧･ﾟ: *Llenen y copien* :ﾟ･✧👾`
+🎀✧･ﾟ: *Llenen y copien lindos* :ﾟ･✧🎀`
 
     await conn.sendMessage(m.chat, { text: plantilla }, { quoted: m })
 }
