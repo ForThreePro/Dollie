@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 import FormData from "form-data"
 import crypto from "crypto"
 
-const MARCA = 'Ricky Bot Prem 👾' // <- TU MARCA
+const MARCA = 'Dollie bot 🎀' // <- TU MARCA
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     const key = Buffer.from('c2FzdWtl', 'base64').toString('utf-8')
@@ -11,16 +11,16 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let urlTarget = text? text.trim() : ''
 
     if (!urlTarget &&!/image\/(jpe?g|png)/.test(mime)) {
-        return conn.reply(m.chat, `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⚡ *HD UPSCALER AI*
+        return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *HD UPSCALER AI*
 │
-│ 👾 *Uso correcto:*
-│ Responde a una imagen o envía
+│ 🎀 *Usito correcto:* ⭐
+│ Respóndele a una imagen o manda
 │ un link con: *${usedPrefix + command}*
 │
-│ 🖼️ *Formatos:* JPG / PNG
-│ ⛈️ *Potenciado por IA*
-╰─────────────────❒`, m)
+│ 💫 *Formatos:* JPG / PNG
+│ ⭐ *Potenciado con magia IA*
+╰─────────────────────────╯`, m)
     }
 
     await m.react('⏳')
@@ -48,12 +48,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 finalUrl = jsonUpload.url
             } else {
                 await m.react('❌')
-                return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ❌ *ERROR*
+                return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *AY NO~*
 │
-│ 🔴 *No se pudo subir la imagen*
-│ ⚡ *Motivo:* ${jsonUpload?.message || 'Sin respuesta'}
-╰─────────────────❒`)
+│ ⭐ *No pude subir la fotito*
+│ 🎀 *Motivo:* ${jsonUpload?.message || 'Sin respuesta'}
+╰─────────────────────────╯`)
             }
         }
 
@@ -63,24 +63,24 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         if (contentType && contentType.includes("application/json")) {
             let jsonDl = await resDl.json()
             await m.react('❌')
-            return m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ❌ *ERROR DE API*
+            return m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *ERRORCITO*
 │
-│ ⚡ *${jsonDl.message || 'No se pudo mejorar la imagen.'}*
-╰─────────────────❒`)
+│ ⭐ *${jsonDl.message || 'No pude mejorar la imagen.'}*
+╰─────────────────────────╯`)
         }
 
         let buffer = await resDl.buffer()
-        let info = `╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ✨ *IMAGEN MEJORADA*
+        let info = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ ✨ *FOTITO MEJORADA*
 │
-│ 👾 *Estado:* Procesado con IA
-│ ⚡ *Comando:* ${command.toUpperCase()}
-│ 👑 *Bot:* Ricky Bot Prem
-│ 🔌 *API:* evogb.org
+│ 🎀 *Estado:* Procesado con IA
+│ ⭐ *Comando:* ${command.toUpperCase()}
+│ 💫 *Bot:* Dollie bot
+│ ✨ *API:* evogb.org
 │
-│ > *“Calidad mejorada con IA”*
-╰─────────────────❒`
+│ > *“Calidad brillosa con IA”* 🎀
+╰─────────────────────────╯`
 
         await conn.sendMessage(m.chat, { image: buffer, caption: info }, { quoted: m })
         await m.react('✅')
@@ -88,12 +88,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`╭─❒ *『 𝗥𝗜𝗖𝗞𝗬 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 』* ❒
-│ ⛈️ *ERROR INTERNO*
+        m.reply(`╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+│ 💫 *UPS~*
 │
-│ ⚡ *Servidores saturados o error*
-│ 👾 *Intenta de nuevo en unos seg*
-╰─────────────────❒`)
+│ ⭐ *Servidores ocupaditos*
+│ 🎀 *Intenta de nuevo en un ratito*
+╰─────────────────────────╯`)
     }
 }
 
