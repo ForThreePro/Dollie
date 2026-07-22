@@ -31,7 +31,7 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
 
     // =====.v ===== DISEÑO DOLLIE BOT
     if(command === 'v'){
-        let msg = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
+        let msg = `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮
 │ ✨ *SORTEOS COQUETOS* ✨
 │ 🎀 *Bot:* Dollie bot ~ tu fav
 ╰─────────────────────────╯\n\n`
@@ -65,12 +65,12 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
 
     // =====.list =====
     if(command === 'list'){
-        if(hoy === 'extra') return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ ⭐ *AY NO~*\n│ Los domingos solo se apunta en *EXTRA* 💫\n╰─────────────────────────╯`, m)
+        if(hoy === 'extra') return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ ⭐ *AY NO~*\n│ Los domingos solo se apunta en *EXTRA* 💫\n╰─────────────────────────╯`, m)
 
         let [nombre, numero, premio] = texto.split('/').map(x => x.trim())
         numero = numero?.replace(/[^0-9]/g, '')
 
-        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ 💫 *FORMATO COQUETO*\n│\n│ *Ejemplo:* ⭐\n│.list Muñeca / 936994155 / Mes gratis\n╰─────────────────────────╯`, m)
+        if(!nombre ||!numero ||!premio) return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ 💫 *FORMATO COQUETO*\n│\n│ *Ejemplo:* ⭐\n│.list Muñeca / 936994155 / Mes gratis\n╰─────────────────────────╯`, m)
 
         for(let d of Object.keys(data[gid])){
             data[gid][d] = data[gid][d].filter(u => u.numero!== numero)
@@ -94,12 +94,12 @@ let handler = async (m, { conn, args, command, isAdmin }) => {
 
         data[gid].extra.push({nombre, numero, premio})
         guardarDB(data)
-        return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ ⭐ *ANOTADITA EN EXTRA*\n│\n│ 🎀 *Nombre:* ${nombre}\n│ ⭐ *Número:* ${numero}\n│ 💝 *Premiecito:* ${premio}\n│\n│ *Suerte brillosa para ti* ✨\n╰─────────────────────────╯`, m)
+        return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ ⭐ *ANOTADITA EN EXTRA*\n│\n│ 🎀 *Nombre:* ${nombre}\n│ ⭐ *Número:* ${numero}\n│ 💝 *Premiecito:* ${premio}\n│\n│ *Suerte brillosa para ti* ✨\n╰─────────────────────────╯`, m)
     }
 
     // =====.delall =====
     if(command === 'delall'){
-        if(!isAdmin) return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ 💫 *UPS*\n│ Solo las *ADMINS* pueden borrar todo 🎀\n╰─────────────────────────╯`, m)
+        if(!isAdmin) return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ 💫 *UPS*\n│ Solo las *ADMINS* pueden borrar todo 🎀\n╰─────────────────────────╯`, m)
         data[gid] = {lunes:[], martes:[], miercoles:[], jueves:[], viernes:[], sabado:[], extra:[]}
         guardarDB(data)
         return conn.reply(m.chat, `╭─🎀─❒ *『 𝗗𝗢𝗟𝗟𝗜𝗘 𝗕𝗢𝗧 』* ❒─🎀─╮\n│ ✨ *LIMPIECITA*\n│\n│ 🎀 Lista reiniciada: Lunes a Sábado + Extra\n│ *Empezamos de 0 con mucho brillo* ⭐\n╰─────────────────────────╯`, m)
