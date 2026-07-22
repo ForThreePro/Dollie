@@ -6,20 +6,20 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let q = m.quoted? m.quoted : m;
     let mime = (q.msg || q).mimetype || '';
 
-    if (!mime) throw `👾 *Ricky Bot Prem*\n\nResponde a una imagen con *${usedPrefix + command}*`;
+    if (!mime) throw `🎀 *Dollie bot* 💫\n\nRespóndele a una imagen con *${usedPrefix + command}*`;
     if (!/image\/(jpe?g|png)/.test(mime)) {
-        throw `⚠️ *Formato no soportado.* Solo JPG/PNG. Envía la imagen normal`;
+        throw `⭐ *Ay no~* Solo acepto JPG/PNG. Manda la imagen normal`;
     }
 
     const API_KEY = "FEx4CYmYN1QRQWD1mbZp87jV";
 
     await m.react('⏳');
-    await m.reply('⚡ *Quitando fondo con Ricky Bot Prem...*');
+    await m.reply('✨ *Dollie quitando el fondito...*');
 
     try {
         let img = await q.download();
-        if (!img) throw '❌ No se pudo descargar la imagen';
-        if (img.length > 12 * 1024 * 1024) throw '❌ *Imagen muy pesada.* Máximo 12MB';
+        if (!img) throw '💫 No pude descargar la fotito';
+        if (img.length > 12 * 1024 * 1024) throw '⭐ *La imagen pesa mucho.* Máximo 12MB';
 
         let base64Img = img.toString('base64');
 
@@ -37,7 +37,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
         if (!res.ok) {
             let errorText = await res.text();
-            throw `❌ Error ${res.status}: ${errorText}`;
+            throw `💫 Error ${res.status}: ${errorText}`;
         }
 
         let processedImg = await res.buffer();
@@ -45,8 +45,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         await conn.sendFile(
             m.chat,
             processedImg,
-            'ricky_prem.png',
-            '✨ *Fondo eliminado con éxito* ✨\n\n👾 *Ricky Bot Prem*',
+            'dollie_bot.png',
+            '🎀 *Fondito eliminado con éxito* 🎀\n\n✨ *Dollie bot*',
             m
         );
 
